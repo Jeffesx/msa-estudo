@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Teste Supabase — Portal MSA</title>
+<style>
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:#f4f6f8;color:#20252b;margin:0;padding:24px}
+main{max-width:760px;margin:auto;background:#fff;border:1px solid #dfe4e8;border-radius:18px;padding:22px}
+h1{margin-top:0}code,pre{background:#f4f4f8;border-radius:8px;padding:4px 7px}pre{white-space:pre-wrap;padding:12px}
+button{border:0;background:#4d45c8;color:#fff;padding:10px 14px;border-radius:9px;font-weight:800;cursor:pointer}
+.ok{color:#087a55}.bad{color:#b3322c}.muted{color:#69717d;font-size:13px}
+</style>
+</head>
+<body><main>
+<h1>Teste de persistência</h1>
+<p>Esta página verifica se o portal consegue registrar dados no Supabase usando a configuração pública.</p>
+<p><strong>Status:</strong> <span id="status">carregando...</span></p>
+<p><strong>Participant ID:</strong> <code id="pid"></code></p>
+<p><strong>Código de continuidade:</strong> <code id="recovery"></code></p>
+<button onclick="testWrite()">Testar gravação</button>
+<pre id="out"></pre>
+<p class="muted">Se aparecer “Supabase ainda não configurado”, preencha <code>/assets/js/supabase-config.js</code>. Se houver erro de RPC, execute novamente <code>01-schema.sql</code> no SQL Editor.</p>
+</main>
+<script src="../assets/js/supabase-config.js"></script>
+<script src="../assets/js/portal-store.js"></script>
+<script>
+const st=MSAStore.status();
+document.getElementById('pid').textContent=st.identity.participantId;
+document.getElementById('recovery').textContent=st.identity.recoveryCode;
+document.getElementById('status').textContent=st.configured?'configurado':'não configurado';
+document.getElementById('status').className=st.configured?'ok':'bad';
+
+async function testWrite(){
+ const out=document.getElementById('out');
+ out.textContent='Gravando...';
+ MSAStore.record('teste','connection','browser',{ok:true,at:new Date().toISOString()});
+ MSAStore.event('teste','connection_test',{at:new Date().toISOString()});
+ await MSAStore.flush();
+ try{
+   const rows=await MSAStore.getRecords('teste');
+   out.textContent='OK — registro encontrado na nuvem:\n'+JSON.stringify(rows,null,2);
+ }catch(e){
+   out.textContent='ERRO:\n'+e.message;
+ }
+}
+</script>
+</body></html>
