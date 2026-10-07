@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f4f46">
+<title>MSA — Estudo Rápido e Responsivo</title>
+<style>
+:root{--bg:#f5f7f6;--surface:#ffffff;--surface2:#f0f5f3;--ink:#17211e;--muted:#60706a;--brand:#0f4f46;--brand2:#1d6b5f;--accent:#d5a84b;--line:#dce6e2;--shadow:0 8px 30px rgba(21,54,45,.08);--radius:18px;--sidebar:310px;--header:72px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+button,input{font:inherit}a{color:inherit}.progress{position:fixed;inset:0 0 auto 0;height:4px;background:transparent;z-index:100}.progress>span{display:block;height:100%;width:0;background:var(--accent);transition:width .08s linear}
+.topbar{position:sticky;top:0;z-index:80;height:var(--header);background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:10px 20px}
+.brand{display:flex;align-items:center;gap:12px;min-width:250px}.brand-mark{width:42px;height:42px;border-radius:12px;background:var(--brand);color:white;display:grid;place-items:center;font-weight:900;letter-spacing:.03em}.brand-text b{display:block;font-size:15px}.brand-text span{display:block;font-size:12px;color:var(--muted)}
+.search-wrap{flex:1;max-width:760px;position:relative}.search-wrap input{width:100%;border:1px solid var(--line);background:var(--surface2);border-radius:14px;padding:12px 44px 12px 15px;outline:none;color:var(--ink)}.search-wrap input:focus{border-color:#87b8ae;box-shadow:0 0 0 3px rgba(29,107,95,.12)}.clear-search{position:absolute;right:7px;top:50%;transform:translateY(-50%);width:34px;height:34px;border:0;background:transparent;border-radius:9px;cursor:pointer;color:var(--muted)}
+.top-actions{display:flex;gap:8px;margin-left:auto}.action-btn{border:1px solid var(--line);background:var(--surface);color:var(--brand);border-radius:12px;padding:9px 12px;font-weight:750;cursor:pointer}.action-btn:hover{background:var(--surface2)}.menu-btn{display:none}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - var(--header))}.sidebar{position:sticky;top:var(--header);height:calc(100vh - var(--header));overflow:auto;border-right:1px solid var(--line);background:#fbfcfc;padding:20px 14px 80px}
+.sidebar-title{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800;color:var(--muted);padding:0 10px 12px}.nav-group{margin-bottom:18px}.nav-group-title{font-size:12px;font-weight:850;color:var(--brand);text-transform:uppercase;letter-spacing:.08em;padding:8px 10px}.nav-link{display:flex;gap:9px;align-items:flex-start;text-decoration:none;padding:8px 10px;border-radius:10px;font-size:13px;color:#43524d;line-height:1.35}.nav-link:hover{background:var(--surface2);color:var(--brand)}.nav-link.active{background:#e4f0ed;color:var(--brand);font-weight:750}.nav-dot{width:7px;height:7px;border-radius:999px;background:#b7c7c2;margin-top:5px;flex:0 0 auto}.nav-link.active .nav-dot{background:var(--brand)}
+.main{min-width:0;padding:28px clamp(16px,3vw,44px) 80px}.main-inner{max-width:1100px;margin:0 auto}.quick-index{background:linear-gradient(135deg,#0f4f46,#1d6b5f);color:white;border-radius:22px;padding:22px 24px;margin-bottom:24px;box-shadow:var(--shadow)}.quick-index h2{margin:0 0 6px;font-size:22px}.quick-index p{margin:0 0 16px;color:#d9ebe6}.phase-chips{display:flex;gap:8px;overflow:auto;padding-bottom:2px;scrollbar-width:thin}.phase-chip{white-space:nowrap;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.11);color:white;border-radius:999px;padding:8px 12px;text-decoration:none;font-size:13px;font-weight:700}.phase-chip:hover{background:rgba(255,255,255,.20)}
+.study-section{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:clamp(18px,2.7vw,32px);margin:0 0 18px;box-shadow:0 3px 18px rgba(18,50,42,.045);content-visibility:auto;contain-intrinsic-size:500px}.study-section.flash{animation:flash 1s ease}@keyframes flash{0%,100%{box-shadow:0 3px 18px rgba(18,50,42,.045)}50%{box-shadow:0 0 0 5px rgba(213,168,75,.28)}}
+.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand2);font-weight:850;margin-bottom:6px}h1{font-size:clamp(24px,3.4vw,38px);line-height:1.13;margin:0 0 20px;color:#15352f;letter-spacing:-.02em}.lead{font-size:clamp(18px,2vw,22px);line-height:1.45;color:#31443e}.content{font-size:clamp(15px,1.35vw,18px)}
+.grid2,.grid3,.grid4{display:grid;gap:14px}.grid2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}.box{background:#fbfdfc;border:1px solid var(--line);border-left:5px solid var(--brand2);border-radius:14px;padding:16px 17px;min-width:0}.box h3{margin:0 0 8px;font-size:clamp(17px,1.6vw,21px);color:var(--brand)}ul{margin:0;padding-left:20px}li{margin:5px 0}
+.notice,.example{border-radius:14px;padding:15px 17px;margin-top:14px}.notice{background:#fff8e9;border:1px solid #ead7aa;border-left:5px solid var(--accent)}.example{background:#edf6f4;border:1px solid #cde1dc;border-left:5px solid var(--brand2)}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}.chips span{background:#f4f7f6;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-weight:750;color:var(--brand2);font-size:13px}
+.phaseMap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;font-size:14px}.phaseMap div{background:#fbfdfc;border:1px solid var(--line);border-radius:12px;padding:12px;min-height:84px}.phaseMap b{display:block;color:var(--brand);font-size:17px;margin-bottom:4px}.phaseMap span{color:var(--muted)}.meter{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}.meter span{background:#fbfdfc;border:1px solid var(--line);border-radius:14px;min-width:88px;text-align:center;padding:12px}.meter b{display:block;font-size:23px;color:var(--brand)}.meter small{font-size:16px;color:var(--brand2);font-weight:850}
+.study-tools{display:flex;align-items:center;gap:8px;margin:0 0 14px}.result-count{font-size:13px;color:var(--muted)}.no-results{display:none;background:#fff8e9;border:1px solid #ead7aa;border-radius:14px;padding:20px;text-align:center;color:#665f58}
+body.compact .study-section{padding:18px;margin-bottom:10px}body.compact .content{font-size:15px}body.compact .box{padding:12px 13px}body.compact li{margin:2px 0}body.compact .notice,body.compact .example{padding:12px 13px}
+.backtop{position:fixed;right:20px;bottom:20px;width:44px;height:44px;border:0;border-radius:50%;background:var(--brand);color:white;box-shadow:var(--shadow);cursor:pointer;display:none;z-index:75;font-size:18px}.backtop.show{display:block}
+.highlight{background:#fff1b8;border-radius:3px;padding:0 2px}
+@media(max-width:980px){:root{--header:64px}.brand{min-width:auto}.brand-text{display:none}.topbar{padding:9px 12px}.menu-btn{display:inline-flex}.layout{display:block}.sidebar{position:fixed;top:var(--header);left:0;bottom:0;width:min(86vw,340px);height:auto;z-index:90;transform:translateX(-105%);transition:transform .22s ease;box-shadow:20px 0 50px rgba(0,0,0,.14)}body.menu-open .sidebar{transform:translateX(0)}body.menu-open::after{content:"";position:fixed;inset:var(--header) 0 0 0;background:rgba(0,0,0,.28);z-index:85}.main{padding-top:18px}.phaseMap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.top-actions .compact-label{display:none}.action-btn{padding:9px 10px}.grid2,.grid3,.grid4{grid-template-columns:1fr}.phaseMap{grid-template-columns:1fr}.quick-index{border-radius:16px;padding:18px 16px}.study-section{border-radius:15px;padding:18px 15px;margin-bottom:12px}h1{font-size:25px}.content{font-size:16px}.box h3{font-size:18px}.meter span{flex:1;min-width:72px}}
+@media(max-width:460px){.brand-mark{width:38px;height:38px}.search-wrap input{padding-left:12px;font-size:14px}.main{padding-left:10px;padding-right:10px}.study-section{padding:16px 13px}.quick-index{margin-left:0;margin-right:0}}
+@media print{.topbar,.sidebar,.quick-index,.study-tools,.backtop,.progress{display:none!important}.layout{display:block}.main{padding:0}.study-section{break-inside:avoid;box-shadow:none;border-color:#bbb;margin-bottom:12px}body{background:white}}
+</style>
+
+<style>
+.site-home-link{
+  position:fixed;right:18px;top:82px;z-index:79;
+  text-decoration:none;background:#ffffff;color:#0f4f46;
+  border:1px solid #dce6e2;border-radius:999px;padding:8px 12px;
+  font:700 13px/1.2 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-shadow:0 6px 20px rgba(21,54,45,.10)
+}
+.site-home-link:hover{background:#f0f5f3}
+@media(max-width:980px){.site-home-link{top:72px;right:10px}}
+@media print{.site-home-link{display:none!important}}
+</style>
+
+</head>
+<body>
+<a class="site-home-link" href="../" aria-label="Voltar ao início">← Início</a>
+<div class="progress"><span id="readingProgress"></span></div>
+<header class="topbar">
+  <button class="action-btn menu-btn" id="menuBtn" aria-label="Abrir índice">☰</button>
+  <div class="brand"><div class="brand-mark">MSA</div><div class="brand-text"><b>Estudo rápido</b><span>16 fases • termos do MSA</span></div></div>
+  <div class="search-wrap"><input id="search" type="search" placeholder="Buscar termo: síncopa, andamento, fermata..." autocomplete="off"><button class="clear-search" id="clearSearch" aria-label="Limpar busca">✕</button></div>
+  <div class="top-actions"><button class="action-btn" id="compactBtn" title="Alternar densidade"><span class="compact-label">Modo </span>compacto</button></div>
+</header>
+<div class="layout">
+<aside class="sidebar" id="sidebar"><div class="sidebar-title">Índice rápido</div><div class="nav-group"><div class="nav-group-title">Apresentação HTML</div><a class="nav-link" href="#sec-1" data-target="sec-1"><span class="nav-dot"></span><span>MSA — explicação completa com termos do próprio MSA</span></a></div><div class="nav-group"><div class="nav-group-title">Como estudar</div><a class="nav-link" href="#sec-2" data-target="sec-2"><span class="nav-dot"></span><span>Regra de leitura desta apresentação</span></a></div><div class="nav-group"><div class="nav-group-title">Mapa do MSA</div><a class="nav-link" href="#sec-3" data-target="sec-3"><span class="nav-dot"></span><span>Fases e assuntos principais</span></a></div><div class="nav-group"><div class="nav-group-title">Programa mínimo</div><a class="nav-link" href="#sec-4" data-target="sec-4"><span class="nav-dot"></span><span>Relação com Cultos Oficiais e Oficialização</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 1</div><a class="nav-link" href="#sec-5" data-target="sec-5"><span class="nav-dot"></span><span>1.1 — Música e som</span></a><a class="nav-link" href="#sec-6" data-target="sec-6"><span class="nav-dot"></span><span>1.2 — Elementos da música</span></a><a class="nav-link" href="#sec-7" data-target="sec-7"><span class="nav-dot"></span><span>1.3 — Propriedades do som</span></a><a class="nav-link" href="#sec-8" data-target="sec-8"><span class="nav-dot"></span><span>1.4, 1.5 e 1.6 — Notas musicais, pentagrama e claves</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 2</div><a class="nav-link" href="#sec-9" data-target="sec-9"><span class="nav-dot"></span><span>2.1 — Figuras musicais</span></a><a class="nav-link" href="#sec-10" data-target="sec-10"><span class="nav-dot"></span><span>2.2, 2.3 e 2.4 — Compasso, barras e fórmula de compasso em 4</span></a><a class="nav-link" href="#sec-11" data-target="sec-11"><span class="nav-dot"></span><span>2.5 — Ritmo e pulsação</span></a><a class="nav-link" href="#sec-12" data-target="sec-12"><span class="nav-dot"></span><span>2.6 — Forma de realização dos exercícios rítmicos</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 3</div><a class="nav-link" href="#sec-13" data-target="sec-13"><span class="nav-dot"></span><span>3.1 — Endecagrama</span></a><a class="nav-link" href="#sec-14" data-target="sec-14"><span class="nav-dot"></span><span>3.2 — Leitura rítmica, leitura métrica e solfejo</span></a><a class="nav-link" href="#sec-15" data-target="sec-15"><span class="nav-dot"></span><span>3.3, 3.4 e 3.5 — Condução, movimento em 4 e metrônomo</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 4</div><a class="nav-link" href="#sec-16" data-target="sec-16"><span class="nav-dot"></span><span>4.1 e 4.2 — Ligadura e ponto de aumento</span></a><a class="nav-link" href="#sec-17" data-target="sec-17"><span class="nav-dot"></span><span>4.3 — Intervalo</span></a><a class="nav-link" href="#sec-18" data-target="sec-18"><span class="nav-dot"></span><span>4.4 a 4.7 — Fórmulas de compasso em 3 e em 2; movimentos de solfejo</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 5</div><a class="nav-link" href="#sec-19" data-target="sec-19"><span class="nav-dot"></span><span>5.1 — Tercinas</span></a><a class="nav-link" href="#sec-20" data-target="sec-20"><span class="nav-dot"></span><span>5.2 — Fermata</span></a><a class="nav-link" href="#sec-21" data-target="sec-21"><span class="nav-dot"></span><span>5.3 a 5.5 — Fórmula e movimento de solfejo em 6</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 6</div><a class="nav-link" href="#sec-22" data-target="sec-22"><span class="nav-dot"></span><span>6.1 e 6.2 — Tom, semitom e acidentes</span></a><a class="nav-link" href="#sec-23" data-target="sec-23"><span class="nav-dot"></span><span>6.3 a 6.7 — Escalas</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 7</div><a class="nav-link" href="#sec-24" data-target="sec-24"><span class="nav-dot"></span><span>7.1 — Armadura de clave</span></a><a class="nav-link" href="#sec-25" data-target="sec-25"><span class="nav-dot"></span><span>7.2 a 7.4 — Fórmula, movimento e movimento alternativo em 9</span></a><a class="nav-link" href="#sec-26" data-target="sec-26"><span class="nav-dot"></span><span>7.5 a 7.7 — Fórmula, movimento e movimento alternativo em 12</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 8</div><a class="nav-link" href="#sec-27" data-target="sec-27"><span class="nav-dot"></span><span>8.1 — Tonalidade</span></a><a class="nav-link" href="#sec-28" data-target="sec-28"><span class="nav-dot"></span><span>8.2 — Acidentes ocorrentes e de precaução</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 9</div><a class="nav-link" href="#sec-29" data-target="sec-29"><span class="nav-dot"></span><span>9.1 — Barra de compasso — repetição</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 10</div><a class="nav-link" href="#sec-30" data-target="sec-30"><span class="nav-dot"></span><span>10.1 — Dinâmica</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 11</div><a class="nav-link" href="#sec-31" data-target="sec-31"><span class="nav-dot"></span><span>11.1 — Acento métrico</span></a><a class="nav-link" href="#sec-32" data-target="sec-32"><span class="nav-dot"></span><span>11.2 — Compasso simples</span></a><a class="nav-link" href="#sec-33" data-target="sec-33"><span class="nav-dot"></span><span>11.3 e 11.4 — Compasso composto e compassos alternados</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 12</div><a class="nav-link" href="#sec-34" data-target="sec-34"><span class="nav-dot"></span><span>12.1 — Síncopa</span></a><a class="nav-link" href="#sec-35" data-target="sec-35"><span class="nav-dot"></span><span>12.2 — Contratempo</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 13</div><a class="nav-link" href="#sec-36" data-target="sec-36"><span class="nav-dot"></span><span>13.1 — Ritmos iniciais</span></a><a class="nav-link" href="#sec-37" data-target="sec-37"><span class="nav-dot"></span><span>Tético, anacrúsico e acéfalo</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 14</div><a class="nav-link" href="#sec-38" data-target="sec-38"><span class="nav-dot"></span><span>14.1 — Notas pontuadas — diferenças na subdivisão</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 15</div><a class="nav-link" href="#sec-39" data-target="sec-39"><span class="nav-dot"></span><span>15.1 — Andamento</span></a><a class="nav-link" href="#sec-40" data-target="sec-40"><span class="nav-dot"></span><span>15.2 e 15.3 — Poco rallentando e modificação indevida de andamento</span></a></div><div class="nav-group"><div class="nav-group-title">Fase 16</div><a class="nav-link" href="#sec-41" data-target="sec-41"><span class="nav-dot"></span><span>16.1 — Frases e semifrases</span></a><a class="nav-link" href="#sec-42" data-target="sec-42"><span class="nav-dot"></span><span>16.2 e 16.3 — Interpretação musical e indicações interpretativas</span></a></div><div class="nav-group"><div class="nav-group-title">Revisão final</div><a class="nav-link" href="#sec-43" data-target="sec-43"><span class="nav-dot"></span><span>Prioridade de estudo para Cultos Oficiais</span></a><a class="nav-link" href="#sec-44" data-target="sec-44"><span class="nav-dot"></span><span>Prioridade de estudo para Oficialização</span></a></div></aside>
+<main class="main"><div class="main-inner">
+<section class="quick-index">
+<h2>MSA — acesso rápido por fase</h2>
+<p>Use a busca ou selecione uma fase. O conteúdo permanece com a terminologia do MSA e explicação facilitada.</p>
+<div class="phase-chips">
+<a class="phase-chip" href="#sec-1">Início</a>
+<a class="phase-chip" href="#sec-5">Fase 1</a><a class="phase-chip" href="#sec-9">Fase 2</a><a class="phase-chip" href="#sec-13">Fase 3</a><a class="phase-chip" href="#sec-16">Fase 4</a><a class="phase-chip" href="#sec-19">Fase 5</a><a class="phase-chip" href="#sec-22">Fase 6</a><a class="phase-chip" href="#sec-24">Fase 7</a><a class="phase-chip" href="#sec-27">Fase 8</a><a class="phase-chip" href="#sec-29">Fase 9</a><a class="phase-chip" href="#sec-30">Fase 10</a><a class="phase-chip" href="#sec-31">Fase 11</a><a class="phase-chip" href="#sec-34">Fase 12</a><a class="phase-chip" href="#sec-36">Fase 13</a><a class="phase-chip" href="#sec-38">Fase 14</a><a class="phase-chip" href="#sec-39">Fase 15</a><a class="phase-chip" href="#sec-41">Fase 16</a>
+<a class="phase-chip" href="#sec-43">Revisão final</a>
+</div></section>
+<div class="study-tools"><span class="result-count" id="resultCount">44 tópicos disponíveis</span></div>
+<div class="no-results" id="noResults"><b>Nenhum tópico encontrado.</b><br>Limpe a busca ou tente outro termo do MSA.</div>
+<section class="study-section" data-group="Apresentação HTML" data-phase="" id="sec-1">
+<div class="kicker">Apresentação HTML</div>
+<h1>MSA — explicação completa com termos do próprio MSA</h1>
+<div class="content"><p class="lead">Apresentação corrigida para manter a nomenclatura do <b>Método Simplificado de Aprendizagem Musical — MSA</b>.</p><div class="notice"><b>Critério desta versão:</b> os títulos, termos e significados seguem o MSA. A explicação abaixo de cada termo foi apenas facilitada para estudo, sem trocar a nomenclatura.</div><div class="chips"><span>16 fases</span><span>Termos do MSA</span><span>Explicação facilitada</span><span>Exemplos do método</span></div></div>
+</section>
+<section class="study-section" data-group="Como estudar" data-phase="" id="sec-2">
+<div class="kicker">Como estudar</div>
+<h1>Regra de leitura desta apresentação</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Termo do MSA</h3><ul><li>Aparece com a mesma nomenclatura usada no método.</li><li>Não substitui o termo técnico por sinônimo informal.</li><li>Quando houver sigla do MSA, ela será preservada.</li></ul></div><div class="box"><h3>Explicação facilitada</h3><ul><li>Explica o sentido em linguagem mais direta.</li><li>Mantém o significado técnico apresentado no método.</li><li>Evita acrescentar conceitos fora do MSA quando o método não usa esse termo.</li></ul></div></div><div class="notice">Use esta apresentação como roteiro de revisão. Para teste, o aluno precisa estudar o MSA no próprio método, com exercícios e solfejos.</div></div>
+</section>
+<section class="study-section" data-group="Mapa do MSA" data-phase="" id="sec-3">
+<div class="kicker">Mapa do MSA</div>
+<h1>Fases e assuntos principais</h1>
+<div class="content"><div class="phaseMap"><div><b>Fase 1</b><span>Música e som; elementos da música; propriedades do som; notas musicais; pentagrama; claves</span></div><div><b>Fase 2</b><span>Figuras musicais; compasso; barras de compasso; fórmula de compasso em 4; ritmo e pulsação</span></div><div><b>Fase 3</b><span>Endecagrama; leitura rítmica, leitura métrica e solfejo; condução; metrônomo</span></div><div><b>Fase 4</b><span>Ligadura; ponto de aumento; intervalo; fórmula de compasso em 3 e em 2</span></div><div><b>Fase 5</b><span>Tercinas; fermata; fórmula de compasso em 6; movimento alternativo</span></div><div><b>Fase 6</b><span>Tom e semitom; acidentes; escalas; escalas maiores com sustenidos e bemóis</span></div><div><b>Fase 7</b><span>Armadura de clave; compassos em 9 e 12; movimentos alternativos</span></div><div><b>Fase 8</b><span>Tonalidade; acidentes ocorrentes e de precaução</span></div><div><b>Fase 9</b><span>Barra de compasso — repetição</span></div><div><b>Fase 10</b><span>Dinâmica</span></div><div><b>Fase 11</b><span>Acento métrico; compasso simples; compasso composto; compassos alternados</span></div><div><b>Fase 12</b><span>Síncopa; contratempo</span></div><div><b>Fase 13</b><span>Ritmos iniciais</span></div><div><b>Fase 14</b><span>Notas pontuadas — diferenças na subdivisão</span></div><div><b>Fase 15</b><span>Andamento; poco rallentando; modificação indevida de andamento</span></div><div><b>Fase 16</b><span>Frases e semifrases; interpretação musical; indicações interpretativas</span></div></div></div>
+</section>
+<section class="study-section" data-group="Programa mínimo" data-phase="" id="sec-4">
+<div class="kicker">Programa mínimo</div>
+<h1>Relação com Cultos Oficiais e Oficialização</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Cultos Oficiais</h3><ul><li>Teoria: MSA até a Fase 16.</li><li>Solfejo: todos os hinos.</li><li>Hinário: completo — voz principal + voz alternativa.</li><li>Estudar também a apresentação exigida de voz principal, voz alternativa e soprano.</li></ul></div><div class="box"><h3>Oficialização</h3><ul><li>Teoria: MSA completo com revisão.</li><li>Solfejo: todos os hinos.</li><li>Hinário: completo — voz principal + voz alternativa.</li><li>Exige segurança maior: leitura, ritmo, andamento, fraseado e interpretação.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 1" data-phase="" id="sec-5">
+<div class="kicker">Fase 1</div>
+<h1>1.1 — Música e som</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Música</h3><ul><li>No contexto do MSA, é a arte de expressar sentimentos por meio de sons coordenados.</li><li>Esses sons podem ser produzidos por voz ou instrumento musical.</li><li>A aplicação é no contexto da música sacra destinada a louvores e súplicas a Deus.</li></ul></div><div class="box"><h3>Som</h3><ul><li>É tudo o que ouvimos.</li><li>É formado pela propagação de ondas no ar ao serem captadas pelos ouvidos.</li><li>Na prática, o som musical precisa ser organizado em altura, duração, intensidade e timbre.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 1" data-phase="" id="sec-6">
+<div class="kicker">Fase 1</div>
+<h1>1.2 — Elementos da música</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Melodia</h3><ul><li>Produção ordenada de sons sucessivos.</li><li>No hinário, cada voz individualmente pode ser considerada uma melodia.</li><li>Exemplo do MSA: a voz do baixo é uma voz melódica e deve ser entoada como tal.</li></ul></div><div class="box"><h3>Harmonia</h3><ul><li>Produção ordenada de vários sons diferentes emitidos de modo simultâneo.</li><li>Nos hinos, ocorre quando mais de uma voz soa ao mesmo tempo.</li><li>Soprano, contralto, tenor e baixo formam harmonia quando entoados simultaneamente.</li></ul></div><div class="box"><h3>Ritmo</h3><ul><li>Disposição ordenada de sons no tempo.</li><li>Combina sons curtos, sons longos e silêncios.</li><li>É a organização das durações dentro da música.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 1" data-phase="" id="sec-7">
+<div class="kicker">Fase 1</div>
+<h1>1.3 — Propriedades do som</h1>
+<div class="content"><div class="grid4"><div class="box"><h3>Timbre</h3><ul><li>Distingue sons produzidos por diferentes fontes sonoras.</li><li>É a “cor do som”.</li><li>Exemplo: a mesma música no violino e no trompete soa com timbres diferentes.</li></ul></div><div class="box"><h3>Duração</h3><ul><li>Sustentação do som em determinado espaço de tempo.</li><li>Pode ser som curto ou som longo.</li><li>É representada na escrita musical pelas figuras musicais.</li></ul></div><div class="box"><h3>Altura</h3><ul><li>Permite distinguir sons graves, médios e agudos.</li><li>Relaciona-se à frequência do som.</li><li>Quanto maior a frequência, mais agudo é o som.</li></ul></div><div class="box"><h3>Intensidade</h3><ul><li>Volume do som.</li><li>Pode ser som fraco ou som forte.</li><li>Não é a mesma coisa que altura.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 1" data-phase="" id="sec-8">
+<div class="kicker">Fase 1</div>
+<h1>1.4, 1.5 e 1.6 — Notas musicais, pentagrama e claves</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Notas musicais</h3><ul><li>São os sinais que representam o som na música escrita, isto é, na partitura.</li><li>No Brasil, os nomes das notas são: Dó, Ré, Mi, Fá, Sol, Lá, Si.</li><li>As notas se repetem em grupos de sete.</li></ul></div><div class="box"><h3>Pentagrama</h3><ul><li>Também chamado de pauta musical.</li><li>Conjunto de 5 linhas e 4 espaços onde são escritas as notas musicais.</li><li>Linhas e espaços são lidos de baixo para cima.</li></ul></div><div class="box"><h3>Claves</h3><ul><li>Sinal que determina o nome da nota escrita em sua linha de referência.</li><li>No hinário: Clave de Sol na 2ª linha, Clave de Dó na 3ª linha e Clave de Fá na 4ª linha.</li><li>A clave permite determinar o nome das demais notas do pentagrama.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 2" data-phase="" id="sec-9">
+<div class="kicker">Fase 2</div>
+<h1>2.1 — Figuras musicais</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Figura de som</h3><ul><li>Representa a duração do som.</li><li>Exemplos do MSA: semibreve, mínima, semínima, colcheia, semicolcheia, fusa e semifusa.</li><li>A relação entre elas é proporcional.</li></ul></div><div class="box"><h3>Figura de silêncio</h3><ul><li>Também chamada de pausa musical.</li><li>Representa o silêncio.</li><li>Cada pausa tem equivalência com uma figura de som.</li></ul></div></div><div class="example"><b>Exemplo de equivalência:</b> 1 semibreve = 2 mínimas = 4 semínimas = 8 colcheias = 16 semicolcheias.</div></div>
+</section>
+<section class="study-section" data-group="Fase 2" data-phase="" id="sec-10">
+<div class="kicker">Fase 2</div>
+<h1>2.2, 2.3 e 2.4 — Compasso, barras e fórmula de compasso em 4</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Compasso</h3><ul><li>Divisão de um trecho musical em séries regulares de tempos.</li><li>Ajuda o músico a entender e executar a música de maneira correta.</li><li>Cada compasso é separado por barras.</li></ul></div><div class="box"><h3>Barras de compasso</h3><ul><li>Barra simples: indica final de um compasso e início de outro.</li><li>Barra dupla: indica final de seção.</li><li>Barra final: indica final do hino ou peça musical.</li></ul></div><div class="box"><h3>Fórmula de compasso em 4</h3><ul><li>Indica a quantidade de tempos ou pulsos de um compasso.</li><li>Indica a figura musical que equivale a cada tempo ou pulso.</li><li>No 4/4, há quatro tempos e a semínima representa cada tempo.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 2" data-phase="" id="sec-11">
+<div class="kicker">Fase 2</div>
+<h1>2.5 — Ritmo e pulsação</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Ritmo</h3><ul><li>Distribuição dos sons num espaço de tempo.</li><li>Envolve sons longos, sons curtos e silêncios.</li><li>É a forma como as durações são organizadas.</li></ul></div><div class="box"><h3>Pulsação</h3><ul><li>Batida ou pulso que marca o início e o fim de um espaço de tempo.</li><li>Deve formar intervalos de tempo semelhantes.</li><li>Exemplos do MSA: batida do coração e pisca-alerta do carro.</li></ul></div></div><div class="example"><b>Aplicação:</b> antes de tocar, o candidato deve sentir a pulsação; depois encaixar as figuras dentro dela.</div></div>
+</section>
+<section class="study-section" data-group="Fase 2" data-phase="" id="sec-12">
+<div class="kicker">Fase 2</div>
+<h1>2.6 — Forma de realização dos exercícios rítmicos</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Objetivo</h3><ul><li>Desenvolver a pulsação do candidato.</li><li>Produzir movimentos regulares.</li><li>Manter a mesma duração entre os pulsos.</li></ul></div><div class="box"><h3>Formas indicadas no MSA</h3><ul><li>Marcando com palmas.</li><li>Batendo a mão sobre uma superfície.</li><li>Utilizando um lápis ou qualquer outro objeto rígido.</li><li>Batendo com outros materiais e equipamentos.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 3" data-phase="" id="sec-13">
+<div class="kicker">Fase 3</div>
+<h1>3.1 — Endecagrama</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Endecagrama</h3><ul><li>Mostra a relação entre as claves e a posição das notas.</li><li>Ajuda a entender que a mesma nota pode aparecer em regiões diferentes da escrita musical.</li><li>Facilita a leitura entre Clave de Sol, Clave de Dó e Clave de Fá.</li></ul></div><div class="box"><h3>Uso no estudo</h3><ul><li>Comparar a mesma nota nas claves.</li><li>Localizar notas acima e abaixo da região comum.</li><li>Evitar decorar apenas posições isoladas.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 3" data-phase="" id="sec-14">
+<div class="kicker">Fase 3</div>
+<h1>3.2 — Leitura rítmica, leitura métrica e solfejo</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Leitura rítmica</h3><ul><li>Falar a sílaba “TA”.</li><li>Executar com precisão o ritmo estabelecido pelas figuras musicais na partitura.</li><li>Não fala o nome das notas.</li></ul></div><div class="box"><h3>Leitura métrica</h3><ul><li>Falar o nome das notas musicais.</li><li>Não cantar as alturas.</li><li>Manter o mesmo ritmo escrito na partitura.</li></ul></div><div class="box"><h3>Solfejo</h3><ul><li>Cantar as notas musicais na altura correta.</li><li>Manter o padrão rítmico escrito.</li><li>Integra nota, ritmo e movimento de condução.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 3" data-phase="" id="sec-15">
+<div class="kicker">Fase 3</div>
+<h1>3.3, 3.4 e 3.5 — Condução, movimento em 4 e metrônomo</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Movimentos de condução para solfejo</h3><ul><li>São a representação visual da pulsação determinada pela fórmula de compasso.</li><li>Devem ser feitos dentro de uma janela de movimento.</li><li>A mão deve manter movimentos regulares.</li></ul></div><div class="box"><h3>Movimento de solfejo em 4</h3><ul><li>Usado em compassos com quatro tempos.</li><li>O movimento começa no ponto 1, embaixo.</li><li>O movimento termina no ponto seguinte antes de iniciar o próximo.</li></ul></div><div class="box"><h3>Metrônomo</h3><ul><li>Equipamento que faz cliques sonoros repetidos a uma velocidade ajustável.</li><li>Auxilia a determinar a velocidade da música ou dos exercícios.</li><li>Ajuda a manter a pulsação regular.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 4" data-phase="" id="sec-16">
+<div class="kicker">Fase 4</div>
+<h1>4.1 e 4.2 — Ligadura e ponto de aumento</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Ligadura</h3><ul><li>Linha curva colocada acima ou abaixo de duas ou mais notas.</li><li>Ligadura de valor: prolonga o som e soma valores de notas de mesma altura.</li><li>Ligadura de portamento: liga notas de alturas diferentes, sem interrupção.</li></ul></div><div class="box"><h3>Ponto de aumento</h3><ul><li>Ponto colocado à direita da cabeça da figura musical.</li><li>Aumenta metade da sua duração.</li><li>Ponto duplo: o segundo ponto aumenta metade da duração do primeiro ponto.</li></ul></div></div><div class="example"><b>Exemplo:</b> mínima pontuada = valor da mínima + metade do valor da mínima.</div></div>
+</section>
+<section class="study-section" data-group="Fase 4" data-phase="" id="sec-17">
+<div class="kicker">Fase 4</div>
+<h1>4.3 — Intervalo</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Intervalo</h3><ul><li>Distância entre dois sons.</li><li>Intervalo melódico: notas soam sucessivamente.</li><li>Intervalo harmônico: notas soam simultaneamente.</li></ul></div><div class="box"><h3>Como estudar</h3><ul><li>Contar a distância incluindo a nota inicial e a nota final.</li><li>Reconhecer saltos e graus conjuntos.</li><li>Aplicar na leitura do hinário e nos exercícios.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 4" data-phase="" id="sec-18">
+<div class="kicker">Fase 4</div>
+<h1>4.4 a 4.7 — Fórmulas de compasso em 3 e em 2; movimentos de solfejo</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Fórmula de compasso em 3</h3><ul><li>O número superior 3 indica que o compasso terá 3 tempos.</li><li>O número inferior indica a figura que representa cada tempo ou movimento.</li><li>O movimento de solfejo em 3 acompanha essa organização.</li></ul></div><div class="box"><h3>Fórmula de compasso em 2</h3><ul><li>O número superior 2 indica que o compasso terá 2 tempos.</li><li>O número inferior indica a figura que representa cada tempo ou movimento.</li><li>O movimento de solfejo em 2 acompanha essa organização.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 5" data-phase="" id="sec-19">
+<div class="kicker">Fase 5</div>
+<h1>5.1 — Tercinas</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Tercinas</h3><ul><li>Grupo de 3 figuras colocado no lugar em que normalmente caberiam apenas 2 figuras do mesmo valor.</li><li>São indicadas pelo número 3 escrito acima ou abaixo do grupo de figuras.</li><li>Alteram a divisão normal do tempo.</li></ul></div><div class="box"><h3>Explicação facilitada</h3><ul><li>Onde normalmente caberiam 2 notas iguais, passam a caber 3.</li><li>As 3 figuras devem ser distribuídas de forma regular.</li><li>Não se deve tocar como se fossem duas notas mais uma sobra.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 5" data-phase="" id="sec-20">
+<div class="kicker">Fase 5</div>
+<h1>5.2 — Fermata</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Fermata</h3><ul><li>Sinal colocado acima ou abaixo de uma nota.</li><li>Indica prolongamento do valor da nota por breve silêncio, com respiração.</li><li>O som prolongado deve ser interrompido com silêncio antes da retomada.</li></ul></div><div class="box"><h3>No hinário</h3><ul><li>Após a fermata, a música deve ser retomada na mesma velocidade anterior.</li><li>Nos ensaios e situações sem regência, respeitar os sinais do encarregado ou orientação regional.</li><li>A duração da fermata pode variar conforme estilo, andamento e interpretação.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 5" data-phase="" id="sec-21">
+<div class="kicker">Fase 5</div>
+<h1>5.3 a 5.5 — Fórmula e movimento de solfejo em 6</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Fórmula de compasso em 6</h3><ul><li>O número superior 6 indica que o compasso terá 6 pulsos.</li><li>O número inferior indica a figura que representa cada pulso ou movimento.</li><li>O movimento em 6 é usado quando se conduz cada pulso.</li></ul></div><div class="box"><h3>Movimento alternativo para solfejo em 6</h3><ul><li>Em andamentos mais rápidos, os compassos em 6/8 e 6/4 também podem ser conduzidos alternativamente em 2 tempos.</li><li>Agrupa-se 3 pulsos em cada tempo.</li><li>O agrupamento muda a condução, não muda a escrita das figuras.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 6" data-phase="" id="sec-22">
+<div class="kicker">Fase 6</div>
+<h1>6.1 e 6.2 — Tom, semitom e acidentes</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Tom e semitom</h3><ul><li>Semitom é o menor intervalo entre dois sons na música ocidental.</li><li>Tom é o intervalo formado por dois semitons.</li><li>No estudo, esse assunto prepara a compreensão das escalas e acidentes.</li></ul></div><div class="box"><h3>Acidentes — sustenido e bemol</h3><ul><li>Acidentes são sinais colocados à esquerda da nota natural.</li><li>Modificam a altura da nota.</li><li>Sustenido eleva; bemol abaixa.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 6" data-phase="" id="sec-23">
+<div class="kicker">Fase 6</div>
+<h1>6.3 a 6.7 — Escalas</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Escalas</h3><ul><li>Sequência organizada de notas.</li><li>Escala diatônica maior é estudada conforme a organização de tons e semitons.</li><li>O MSA trabalha escalas maiores com sustenidos e com bemóis.</li></ul></div><div class="box"><h3>Como estudar</h3><ul><li>Identificar a sequência de tons e semitons.</li><li>Reconhecer os acidentes necessários.</li><li>Executar a escala com regularidade, sem perder a afinação e a pulsação.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 7" data-phase="" id="sec-24">
+<div class="kicker">Fase 7</div>
+<h1>7.1 — Armadura de clave</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Armadura de clave</h3><ul><li>Conjunto de acidentes colocado após a clave.</li><li>Indica os acidentes que valem para a tonalidade.</li><li>Ajuda a identificar a tonalidade e as alterações fixas da partitura.</li></ul></div><div class="box"><h3>Como estudar</h3><ul><li>Observar a armadura antes de iniciar a leitura.</li><li>Aplicar os sustenidos ou bemóis durante todo o trecho.</li><li>Não confundir acidente da armadura com acidente ocorrente.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 7" data-phase="" id="sec-25">
+<div class="kicker">Fase 7</div>
+<h1>7.2 a 7.4 — Fórmula, movimento e movimento alternativo em 9</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Fórmula de compasso em 9</h3><ul><li>O número superior 9 indica 9 pulsos.</li><li>Em andamentos mais rápidos, os 9 pulsos podem ser agrupados em 3 tempos.</li><li>Cada tempo agrupado contém 3 pulsos.</li></ul></div><div class="box"><h3>Movimento alternativo para solfejo em 9</h3><ul><li>Usado para conduzir compassos em 9 em andamentos mais rápidos.</li><li>Facilita a condução sem alterar a proporção rítmica.</li><li>O candidato precisa manter internamente os 3 pulsos de cada grupo.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 7" data-phase="" id="sec-26">
+<div class="kicker">Fase 7</div>
+<h1>7.5 a 7.7 — Fórmula, movimento e movimento alternativo em 12</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Fórmula de compasso em 12</h3><ul><li>O número superior 12 indica 12 pulsos.</li><li>Em andamentos mais rápidos, os 12 pulsos podem ser agrupados em 4 tempos.</li><li>Cada tempo agrupado contém 3 pulsos.</li></ul></div><div class="box"><h3>Movimento alternativo para solfejo em 12</h3><ul><li>Usado quando a condução completa ficaria excessiva em andamentos rápidos.</li><li>A condução passa a acompanhar os grupos de pulsos.</li><li>A subdivisão interna continua ternária.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 8" data-phase="" id="sec-27">
+<div class="kicker">Fase 8</div>
+<h1>8.1 — Tonalidade</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Tonalidade</h3><ul><li>Assunto ligado à organização da música em torno de uma nota principal.</li><li>A armadura de clave auxilia na identificação da tonalidade.</li><li>A tonalidade orienta os acidentes e a estrutura da escala usada.</li></ul></div><div class="box"><h3>Como estudar no hinário</h3><ul><li>Antes de tocar, observar clave e armadura.</li><li>Identificar se a tonalidade utiliza sustenidos ou bemóis.</li><li>Tocar respeitando os acidentes da armadura.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 8" data-phase="" id="sec-28">
+<div class="kicker">Fase 8</div>
+<h1>8.2 — Acidentes ocorrentes e de precaução</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Acidentes ocorrentes</h3><ul><li>Aparecem durante o trecho musical.</li><li>Alteram a nota onde aparecem conforme a regra apresentada no MSA.</li><li>Devem ser observados além da armadura de clave.</li></ul></div><div class="box"><h3>Acidentes de precaução</h3><ul><li>São usados para evitar dúvida na leitura.</li><li>Reforçam uma alteração ou retorno esperado.</li><li>Ajudam o músico a não manter ou retirar acidente indevidamente.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 9" data-phase="" id="sec-29">
+<div class="kicker">Fase 9</div>
+<h1>9.1 — Barra de compasso — repetição</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Barra de repetição</h3><ul><li>Indica que um trecho deve ser repetido.</li><li>A repetição deve respeitar o trecho delimitado pelos sinais.</li><li>É necessário observar início e fim de repetição.</li></ul></div><div class="box"><h3>Casas de repetição</h3><ul><li>Quando houver 1ª e 2ª casa, a execução muda na repetição.</li><li>Na primeira passagem, executa-se a 1ª casa.</li><li>Na repetição, omite-se a 1ª casa e segue-se para a 2ª casa.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 10" data-phase="" id="sec-30">
+<div class="kicker">Fase 10</div>
+<h1>10.1 — Dinâmica</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Dinâmica</h3><ul><li>Indica variações de intensidade.</li><li>Relaciona-se ao volume do som: mais fraco ou mais forte.</li><li>Deve ser aplicada sem alterar indevidamente o andamento.</li></ul></div><div class="box"><h3>Termos usuais</h3><ul><li>piano: som fraco.</li><li>forte: som forte.</li><li>crescendo: aumento gradual de intensidade.</li><li>diminuendo ou decrescendo: diminuição gradual de intensidade.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 11" data-phase="" id="sec-31">
+<div class="kicker">Fase 11</div>
+<h1>11.1 — Acento métrico</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Acento métrico</h3><ul><li>Acentuação própria dos tempos dentro do compasso.</li><li>Ajuda a identificar a organização métrica.</li><li>No 4/4: 1º tempo Forte; 2º fraco; 3º meio Forte; 4º fraco.</li></ul></div><div class="box"><h3>Explicação facilitada</h3><ul><li>O tempo forte é o ponto de maior apoio métrico.</li><li>O meio Forte tem apoio intermediário.</li><li>O acento métrico deve orientar a leitura, sem transformar toda nota em acento exagerado.</li></ul></div></div><div class="meter"><span><b>1º</b><small>F</small></span><span><b>2º</b><small>f</small></span><span><b>3º</b><small>mF</small></span><span><b>4º</b><small>f</small></span></div></div>
+</section>
+<section class="study-section" data-group="Fase 11" data-phase="" id="sec-32">
+<div class="kicker">Fase 11</div>
+<h1>11.2 — Compasso simples</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Compasso simples</h3><ul><li>A U.T. da fórmula de compasso é uma figura simples.</li><li>A figura simples pode ser dividida em duas partes iguais.</li><li>Essa subdivisão é binária.</li></ul></div><div class="box"><h3>Identificação no hinário</h3><ul><li>Fórmulas com 2, 3 ou 4 no número superior são consideradas compassos simples.</li><li>Exemplos: binário simples, ternário simples e quaternário simples.</li><li>A fórmula de compasso determina quantidade de tempos e figura de referência.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 11" data-phase="" id="sec-33">
+<div class="kicker">Fase 11</div>
+<h1>11.3 e 11.4 — Compasso composto e compassos alternados</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Compasso composto</h3><ul><li>Cada tempo pode ser dividido em três pulsos iguais.</li><li>Essa subdivisão é ternária.</li><li>Fórmulas com 6, 9 ou 12 no número superior são consideradas compassos compostos.</li></ul></div><div class="box"><h3>Compassos alternados</h3><ul><li>Formados pela junção de duas ou mais fórmulas de compasso diferentes.</li><li>Aplicadas alternadamente a cada compasso.</li><li>No hinário, há junção de duas fórmulas de compasso.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 12" data-phase="" id="sec-34">
+<div class="kicker">Fase 12</div>
+<h1>12.1 — Síncopa</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Síncopa</h3><ul><li>Ocorre quando o som se inicia em tempo ou parte fraca e se prolonga para tempo ou parte forte.</li><li>Produz deslocamento do acento métrico natural.</li><li>Exige segurança na pulsação.</li></ul></div><div class="box"><h3>Como executar</h3><ul><li>Manter a pulsação interna.</li><li>Não antecipar a entrada.</li><li>Não modificar o andamento por causa do deslocamento rítmico.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 12" data-phase="" id="sec-35">
+<div class="kicker">Fase 12</div>
+<h1>12.2 — Contratempo</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Contratempo</h3><ul><li>O som ocorre em parte fraca do tempo ou do compasso.</li><li>A parte forte correspondente fica em silêncio, com pausa escrita ou não escrita.</li><li>Também exige referência firme da pulsação.</li></ul></div><div class="box"><h3>Diferença prática</h3><ul><li>Na síncopa, o som começa na parte fraca e se prolonga para a parte forte.</li><li>No contratempo, a entrada acontece na parte fraca após silêncio na parte forte.</li><li>Ambos deslocam a sensação natural do apoio métrico.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 13" data-phase="" id="sec-36">
+<div class="kicker">Fase 13</div>
+<h1>13.1 — Ritmos iniciais</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Ritmos iniciais</h3><ul><li>Localizam-se apenas no início da partitura musical.</li><li>Podem ser classificados como tético, anacrúsico e acéfalo.</li><li>Não se classificam como ritmo inicial quando aparecem no meio do hino.</li></ul></div><div class="box"><h3>Ponto de atenção</h3><ul><li>O contratempo no início do hino recebe o nome de ritmo inicial acéfalo.</li><li>O contratempo no meio do hino é apenas contratempo.</li><li>A classificação depende da posição no início da partitura.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 13" data-phase="" id="sec-37">
+<div class="kicker">Fase 13</div>
+<h1>Tético, anacrúsico e acéfalo</h1>
+<div class="content"><div class="grid3"><div class="box"><h3>Tético</h3><ul><li>Ritmo que se inicia com som no primeiro tempo do primeiro compasso.</li><li>A primeira nota musical fica no tempo forte do primeiro compasso.</li><li>Exemplo do MSA: Hino 1.</li></ul></div><div class="box"><h3>Anacrúsico</h3><ul><li>Notas iniciais, chamadas anacruses, precedem o primeiro compasso.</li><li>A anacruse não pertence ao primeiro compasso; é anterior a ele.</li><li>Exemplo do MSA: Hino 39.</li></ul></div><div class="box"><h3>Acéfalo</h3><ul><li>Ritmo iniciado por contratempo.</li><li>O início do primeiro compasso é ocupado por pausa, escrita ou não escrita.</li><li>Exemplos do MSA: Hinos 208 e 377.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 14" data-phase="" id="sec-38">
+<div class="kicker">Fase 14</div>
+<h1>14.1 — Notas pontuadas — diferenças na subdivisão</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Notas pontuadas</h3><ul><li>Figuras que recebem ponto de aumento.</li><li>O ponto acrescenta metade do valor da figura.</li><li>A execução precisa respeitar a proporção correta da figura pontuada.</li></ul></div><div class="box"><h3>Diferenças na subdivisão</h3><ul><li>O tempo precisa ser subdividido corretamente para posicionar a nota curta.</li><li>Ritmos pontuados exigem cuidado com a divisão interna.</li><li>A subdivisão evita alongar ou encurtar indevidamente as figuras.</li></ul></div></div><div class="example"><b>Exemplo de estudo:</b> em colcheia pontuada + semicolcheia, a primeira figura ocupa 3 partes e a segunda ocupa 1 parte da subdivisão em 4.</div></div>
+</section>
+<section class="study-section" data-group="Fase 15" data-phase="" id="sec-39">
+<div class="kicker">Fase 15</div>
+<h1>15.1 — Andamento</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Andamento</h3><ul><li>Indicação de velocidade colocada no início da peça musical.</li><li>Pode ser indicado por expressões em italiano ou por marcações de velocidade.</li><li>Nos hinos, há marcações de velocidade mínima e máxima no início da partitura.</li></ul></div><div class="box"><h3>Execução</h3><ul><li>O hino pode ser executado dentro dos limites indicados.</li><li>É recomendável ficar próximo da velocidade média.</li><li>Em qualquer andamento, a proporção entre os valores das figuras deve ser respeitada.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 15" data-phase="" id="sec-40">
+<div class="kicker">Fase 15</div>
+<h1>15.2 e 15.3 — Poco rallentando e modificação indevida de andamento</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Poco rallentando</h3><ul><li>Também pode aparecer abreviado como poco rall.</li><li>Indica pequena redução na velocidade.</li><li>A redução deve ocorrer de modo gradativo.</li></ul></div><div class="box"><h3>Modificação indevida de andamento</h3><ul><li>A modificação do andamento somente deve acontecer onde houver indicação.</li><li>Não se deve executar poco rallentando onde não há essa marcação.</li><li>Dinâmica e expressão não autorizam mudar o andamento por conta própria.</li></ul></div></div><div class="example"><b>Exemplo do MSA:</b> Hino 15 apresenta indicação de poco rall.; Hino 1 é usado como alerta contra execução indevida após a fermata.</div></div>
+</section>
+<section class="study-section" data-group="Fase 16" data-phase="" id="sec-41">
+<div class="kicker">Fase 16</div>
+<h1>16.1 — Frases e semifrases</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Frases</h3><ul><li>Ideias musicais completas dentro do discurso musical.</li><li>Organizam o sentido da execução.</li><li>Ajudam a compreender começo, continuidade e conclusão musical.</li></ul></div><div class="box"><h3>Semifrases</h3><ul><li>Partes menores que compõem uma frase.</li><li>Facilitam a respiração e a organização da execução.</li><li>Devem ser percebidas para não tocar tudo de forma mecânica.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Fase 16" data-phase="" id="sec-42">
+<div class="kicker">Fase 16</div>
+<h1>16.2 e 16.3 — Interpretação musical e indicações interpretativas</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Interpretação musical</h3><ul><li>Execução considerando o sentido musical e expressivo.</li><li>Envolve fraseado, andamento, dinâmica e caráter do hino.</li><li>Não é apenas tocar as notas corretamente.</li></ul></div><div class="box"><h3>Indicações interpretativas</h3><ul><li>Orientam o caráter da execução.</li><li>Devem ser respeitadas conforme o texto, a música e a indicação do método.</li><li>Exigem atenção à expressão sem alterar indevidamente o andamento.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Revisão final" data-phase="" id="sec-43">
+<div class="kicker">Revisão final</div>
+<h1>Prioridade de estudo para Cultos Oficiais</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Estudar obrigatoriamente</h3><ul><li>MSA até a Fase 16.</li><li>Solfejo de todos os hinos.</li><li>Hinário completo.</li><li>Voz principal, voz alternativa e soprano conforme exigência do programa.</li></ul></div><div class="box"><h3>Dar mais foco</h3><ul><li>Acento métrico.</li><li>Compasso simples, composto e alternados.</li><li>Síncopa e contratempo.</li><li>Ritmos iniciais.</li><li>Notas pontuadas.</li><li>Andamento e poco rallentando.</li><li>Frases, semifrases e interpretação musical.</li></ul></div></div></div>
+</section>
+<section class="study-section" data-group="Revisão final" data-phase="" id="sec-44">
+<div class="kicker">Revisão final</div>
+<h1>Prioridade de estudo para Oficialização</h1>
+<div class="content"><div class="grid2"><div class="box"><h3>Estudar obrigatoriamente</h3><ul><li>MSA completo com revisão.</li><li>Todos os hinos no solfejo.</li><li>Hinário completo.</li><li>Método do instrumento conforme programa.</li><li>Voz principal, voz alternativa e soprano.</li></ul></div><div class="box"><h3>Nível esperado</h3><ul><li>Domínio dos termos do MSA.</li><li>Segurança rítmica e métrica.</li><li>Controle de andamento.</li><li>Leitura consistente.</li><li>Execução com fraseado e interpretação.</li></ul></div></div><div class="notice">Para Oficialização, a revisão não deve ser apenas decorada: o candidato precisa explicar o termo e demonstrar na prática.</div></div>
+</section>
+</div></main></div>
+<button class="backtop" id="backtop" aria-label="Voltar ao topo">↑</button>
+<script>
+const sections=[...document.querySelectorAll('.study-section')];
+const navLinks=[...document.querySelectorAll('.nav-link')];
+const search=document.getElementById('search');
+const resultCount=document.getElementById('resultCount');
+const noResults=document.getElementById('noResults');
+const progress=document.getElementById('readingProgress');
+const backtop=document.getElementById('backtop');
+function normalize(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+function filterSections(){
+ const q=normalize(search.value.trim()); let count=0;
+ sections.forEach(s=>{const ok=!q||normalize(s.innerText).includes(q);s.style.display=ok?'block':'none';if(ok)count++;});
+ navLinks.forEach(a=>{const s=document.getElementById(a.dataset.target);a.style.display=(!q||s.style.display!=='none')?'flex':'none';});
+ resultCount.textContent=q?`${count} tópico${count===1?'':'s'} encontrado${count===1?'':'s'}`:`${sections.length} tópicos disponíveis`;
+ noResults.style.display=count?'none':'block';
+ if(q&&count){const first=sections.find(s=>s.style.display!=='none');first?.scrollIntoView({behavior:'smooth',block:'start'});first?.classList.add('flash');setTimeout(()=>first?.classList.remove('flash'),1000);}
+}
+search.addEventListener('input',()=>{clearTimeout(window._st);window._st=setTimeout(filterSections,180)});
+document.getElementById('clearSearch').onclick=()=>{search.value='';filterSections();search.focus()};
+document.getElementById('compactBtn').onclick=()=>{document.body.classList.toggle('compact');document.getElementById('compactBtn').innerHTML=(document.body.classList.contains('compact')?'<span class="compact-label">Modo </span>confortável':'<span class="compact-label">Modo </span>compacto')};
+document.getElementById('menuBtn').onclick=()=>document.body.classList.toggle('menu-open');
+document.addEventListener('click',e=>{if(document.body.classList.contains('menu-open')&&!e.target.closest('#sidebar')&&!e.target.closest('#menuBtn'))document.body.classList.remove('menu-open')});
+navLinks.forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu-open')));
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.dataset.target===e.target.id));}})},{rootMargin:'-25% 0px -65% 0px',threshold:0});sections.forEach(s=>io.observe(s));
+function onScroll(){const doc=document.documentElement;const max=doc.scrollHeight-doc.clientHeight;progress.style.width=(max?doc.scrollTop/max*100:0)+'%';backtop.classList.toggle('show',doc.scrollTop>700)}
+document.addEventListener('scroll',onScroll,{passive:true});onScroll();backtop.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+document.addEventListener('keydown',e=>{if(e.key==='/'&&!['INPUT','TEXTAREA'].includes(document.activeElement.tagName)){e.preventDefault();search.focus()}if(e.key==='Escape'){search.value='';filterSections();document.body.classList.remove('menu-open')}});
+</script>
+</body></html>

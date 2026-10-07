@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MSA — Solfejo | Estudo Rápido</title>
+<style>
+  :root{
+    --bg:#f6f8fb; --card:#ffffff; --text:#17202a; --muted:#5d6d7e;
+    --accent:#1f6f43; --accent2:#eaf5ee; --line:#dfe6e9; --warn:#fff6df;
+    --shadow:0 8px 24px rgba(0,0,0,.07);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+  .top{
+    position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line)
+  }
+  .topin{max-width:1180px;margin:auto;padding:12px 18px;display:flex;gap:12px;align-items:center}
+  .brand{font-weight:800;color:var(--accent);white-space:nowrap}
+  .search{flex:1}
+  .search input{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px}
+  .layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:245px 1fr;gap:22px;padding:22px 18px 50px}
+  nav{position:sticky;top:75px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
+  nav h3{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:4px 8px 10px}
+  nav a{display:block;padding:9px 10px;margin:3px 0;border-radius:8px;color:var(--text);text-decoration:none;font-size:14px}
+  nav a:hover{background:var(--accent2);color:var(--accent)}
+  main{min-width:0}
+  .hero{background:linear-gradient(135deg,#1f6f43,#2d8a57);color:white;border-radius:20px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px}
+  .hero h1{margin:0 0 8px;font-size:clamp(28px,5vw,46px);line-height:1.05}
+  .hero p{margin:0;max-width:780px;opacity:.95}
+  .badge{display:inline-block;background:rgba(255,255,255,.15);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;margin-bottom:12px}
+  section{scroll-margin-top:92px;margin-bottom:20px}
+  .section-title{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+  .num{width:34px;height:34px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800}
+  h2{font-size:24px;margin:0}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+  .card h3{margin:0 0 7px;font-size:17px;color:var(--accent)}
+  .card p{margin:5px 0;color:#263238}
+  .term{font-weight:800}
+  .msa{border-left:4px solid var(--accent);background:#fbfefc}
+  .easy{background:var(--accent2)}
+  .example{background:#f8f9fa;border:1px dashed #b8c2cc}
+  .focus{background:var(--warn);border-color:#f2d27a}
+  ul{margin:8px 0 0 20px;padding:0}
+  li{margin:5px 0}
+  .tablewrap{overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+  table{width:100%;border-collapse:collapse;min-width:650px}
+  th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:#f0f5f2;color:var(--accent)}
+  .checklist label{display:flex;gap:9px;align-items:flex-start;margin:8px 0}
+  .checklist input{margin-top:5px}
+  .footer{max-width:1180px;margin:0 auto 40px;padding:0 18px;color:var(--muted);font-size:13px}
+  .hidden{display:none!important}
+  .mobile-menu{display:none}
+  @media(max-width:840px){
+    .layout{grid-template-columns:1fr;padding-top:14px}
+    nav{position:static;display:none}
+    nav.open{display:block}
+    .mobile-menu{display:inline-flex;border:1px solid var(--line);background:white;padding:10px 12px;border-radius:9px;cursor:pointer}
+    .grid{grid-template-columns:1fr}
+    .topin{flex-wrap:wrap}
+    .brand{flex:1}
+    .search{order:3;flex-basis:100%}
+    .hero{padding:22px}
+  }
+  @media print{
+    .top,nav{display:none!important}
+    .layout{display:block;max-width:none;padding:0}
+    .card,.tablewrap,.hero{box-shadow:none;break-inside:avoid}
+    body{background:white}
+  }
+</style>
+
+<style>
+.site-home-link{
+  position:fixed;right:18px;top:82px;z-index:79;
+  text-decoration:none;background:#ffffff;color:#0f4f46;
+  border:1px solid #dce6e2;border-radius:999px;padding:8px 12px;
+  font:700 13px/1.2 Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  box-shadow:0 6px 20px rgba(21,54,45,.10)
+}
+.site-home-link:hover{background:#f0f5f3}
+@media(max-width:980px){.site-home-link{top:72px;right:10px}}
+@media print{.site-home-link{display:none!important}}
+</style>
+
+</head>
+<body>
+<a class="site-home-link" href="../" aria-label="Voltar ao início">← Início</a>
+<div class="top">
+  <div class="topin">
+    <div class="brand">MSA • SOLFEJO</div>
+    <button class="mobile-menu" onclick="document.querySelector('nav').classList.toggle('open')">☰ Índice</button>
+    <div class="search"><input id="q" type="search" placeholder="Buscar: leitura rítmica, compasso, solfejo em 4..." oninput="filterCards()"></div>
+  </div>
+</div>
+
+<div class="layout">
+<nav>
+  <h3>Estudo rápido</h3>
+  <a href="#conceitos">1. Conceitos básicos</a>
+  <a href="#conducao">2. Movimentos de condução</a>
+  <a href="#em4">3. Solfejo em 4</a>
+  <a href="#em3">4. Solfejo em 3</a>
+  <a href="#em2">5. Solfejo em 2</a>
+  <a href="#em6">6. Solfejo em 6</a>
+  <a href="#alternativo6">7. Movimento alternativo em 6</a>
+  <a href="#metronomo">8. Metrônomo</a>
+  <a href="#clave">9. Claves no solfejo</a>
+  <a href="#programa">10. Programa mínimo</a>
+  <a href="#erros">11. Pontos de atenção</a>
+  <a href="#check">12. Checklist</a>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="badge">Método Simplificado de Aprendizagem Musical — MSA</div>
+    <h1>Solfejo</h1>
+    <p>Guia de estudo rápido com os termos e significados utilizados no MSA, apresentados de forma mais simples para revisão.</p>
+  </div>
+
+  <section id="conceitos">
+    <div class="section-title"><div class="num">1</div><h2>Conceitos básicos</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Leitura rítmica</h3>
+        <p><span class="term">No MSA:</span> leitura executada falando a sílaba <strong>“TA”</strong>, com precisão do ritmo estabelecido pelas figuras musicais.</p>
+        <p><span class="term">Para entender:</span> você executa somente o ritmo, sem se preocupar com o nome ou a altura das notas.</p>
+      </article>
+      <article class="card msa">
+        <h3>Leitura métrica</h3>
+        <p><span class="term">No MSA:</span> leitura em que se falam os <strong>nomes das notas</strong>, sem cantar, executando o ritmo estabelecido pelas figuras musicais.</p>
+        <p><span class="term">Para entender:</span> você lê “Dó, Ré, Mi...” no ritmo correto, mas sem cantar a altura real.</p>
+      </article>
+      <article class="card msa">
+        <h3>Solfejo</h3>
+        <p><span class="term">No MSA:</span> consiste em <strong>cantar as notas musicais na altura</strong>, dentro de um padrão rítmico, conforme escrito na partitura.</p>
+        <p><span class="term">Para entender:</span> agora entram juntos nome da nota, altura e ritmo.</p>
+      </article>
+      <article class="card focus">
+        <h3>Diferença prática</h3>
+        <ul>
+          <li><strong>Leitura rítmica:</strong> “TA” + ritmo.</li>
+          <li><strong>Leitura métrica:</strong> nome das notas + ritmo, sem altura cantada.</li>
+          <li><strong>Solfejo:</strong> nome das notas + ritmo + altura cantada.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="conducao">
+    <div class="section-title"><div class="num">2</div><h2>Movimentos de condução para solfejo</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Movimentos de condução</h3>
+        <p><span class="term">No MSA:</span> são a representação visual da pulsação determinada pela <strong>fórmula de compasso</strong>.</p>
+        <p>São utilizados tanto nos exercícios de leitura rítmica quanto nos exercícios de leitura métrica e de solfejo.</p>
+      </article>
+      <article class="card easy">
+        <h3>Como executar</h3>
+        <ul>
+          <li>Usar a mão correspondente conforme a orientação do MSA.</li>
+          <li>Manter o movimento regular e proporcional.</li>
+          <li>Não “desenhar” movimentos excessivamente grandes.</li>
+          <li>Cada ponto do movimento corresponde a uma referência de pulsação.</li>
+        </ul>
+      </article>
+      <article class="card focus">
+        <h3>Janela do movimento</h3>
+        <p>O MSA orienta realizar os movimentos dentro de uma <strong>janela de movimento</strong>, evitando movimentos muito pequenos ou muito expansivos.</p>
+      </article>
+      <article class="card focus">
+        <h3>Mesa invisível</h3>
+        <p>Os movimentos devem ser feitos como se a mão tocasse uma <strong>superfície rígida invisível</strong> no ar, ajudando a definir com clareza os pontos.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="em4">
+    <div class="section-title"><div class="num">3</div><h2>Movimento de solfejo em 4</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Estrutura</h3>
+        <p>O movimento representa os quatro tempos do compasso.</p>
+        <ul>
+          <li><strong>1º movimento:</strong> embaixo.</li>
+          <li><strong>2º movimento:</strong> para um lado.</li>
+          <li><strong>3º movimento:</strong> para o outro lado.</li>
+          <li><strong>4º movimento:</strong> em cima.</li>
+        </ul>
+      </article>
+      <article class="card example">
+        <h3>Exemplo de estudo</h3>
+        <p>Conte mentalmente <strong>1 – 2 – 3 – 4</strong> enquanto realiza os quatro pontos do movimento, mantendo todos com a mesma duração.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="em3">
+    <div class="section-title"><div class="num">4</div><h2>Movimento de solfejo em 3</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Estrutura</h3>
+        <p>O movimento representa os três tempos do compasso.</p>
+        <p>O primeiro movimento parte para baixo; os demais pontos completam a condução até o retorno.</p>
+      </article>
+      <article class="card example">
+        <h3>Exemplo de estudo</h3>
+        <p>Conte <strong>1 – 2 – 3</strong> mantendo a mesma pulsação entre os três pontos.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="em2">
+    <div class="section-title"><div class="num">5</div><h2>Movimento de solfejo em 2</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Estrutura</h3>
+        <p>O movimento representa os dois tempos do compasso.</p>
+        <ul>
+          <li><strong>1º movimento:</strong> embaixo.</li>
+          <li><strong>2º movimento:</strong> em cima.</li>
+        </ul>
+      </article>
+      <article class="card example">
+        <h3>Exemplo de estudo</h3>
+        <p>Conte <strong>1 – 2</strong>, sem acelerar o retorno da mão ao segundo ponto.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="em6">
+    <div class="section-title"><div class="num">6</div><h2>Movimento de solfejo em 6</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Fórmula de compasso em 6</h3>
+        <p>O MSA apresenta o movimento de solfejo em 6 para os compassos correspondentes, com os seis pulsos representados no movimento.</p>
+      </article>
+      <article class="card focus">
+        <h3>Foco de estudo</h3>
+        <p>Manter os seis pontos com regularidade, sem transformar o movimento em dois grupos irregulares.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="alternativo6">
+    <div class="section-title"><div class="num">7</div><h2>Movimento alternativo para solfejo em 6</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Quando aparece</h3>
+        <p>O MSA apresenta um <strong>movimento alternativo para solfejo em 6</strong> utilizado em determinadas situações de andamento.</p>
+      </article>
+      <article class="card easy">
+        <h3>Como compreender</h3>
+        <p>O objetivo é representar a pulsação de modo mais adequado quando a condução completa em seis movimentos se torna excessiva para o andamento.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="metronomo">
+    <div class="section-title"><div class="num">8</div><h2>Metrônomo</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Função</h3>
+        <p>O <strong>metrônomo</strong> é utilizado para determinar e manter a velocidade da música ou dos exercícios rítmicos.</p>
+      </article>
+      <article class="card focus">
+        <h3>No estudo do solfejo</h3>
+        <p>Use o metrônomo para desenvolver regularidade de pulsação. Primeiro execute mais lentamente e aumente somente quando conseguir manter precisão.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="clave">
+    <div class="section-title"><div class="num">9</div><h2>Claves no solfejo</h2></div>
+    <div class="grid">
+      <article class="card msa">
+        <h3>Clave do método</h3>
+        <p>O MSA orienta que o candidato execute inicialmente os exercícios utilizando a <strong>clave do método do seu instrumento</strong>.</p>
+      </article>
+      <article class="card msa">
+        <h3>Demais claves</h3>
+        <p>Após alcançar domínio satisfatório, o candidato pode estudar as demais claves utilizadas no hinário.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="programa">
+    <div class="section-title"><div class="num">10</div><h2>Programa mínimo — Solfejo</h2></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Etapa</th><th>Programa de solfejo</th><th>Foco de preparação</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Reunião de Jovens e Menores</strong></td><td>Hinos 431 a 480</td><td>Leitura, pulsação, movimento e segurança rítmica.</td></tr>
+          <tr><td><strong>Cultos Oficiais</strong></td><td>Todos os hinos</td><td>Regularidade, leitura segura e domínio dos movimentos.</td></tr>
+          <tr><td><strong>Oficialização</strong></td><td>Todos os hinos</td><td>Domínio consolidado, sem depender de preparação prévia do hino.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="erros">
+    <div class="section-title"><div class="num">11</div><h2>Pontos de atenção</h2></div>
+    <div class="grid">
+      <article class="card focus">
+        <h3>Pulsação</h3>
+        <p>Não permitir que a mão acompanhe a dificuldade da leitura. A pulsação deve permanecer regular.</p>
+      </article>
+      <article class="card focus">
+        <h3>Movimento</h3>
+        <p>Evitar movimentos muito grandes, muito pequenos ou sem pontos definidos.</p>
+      </article>
+      <article class="card focus">
+        <h3>Notas longas</h3>
+        <p>Manter o som durante toda a duração da nota, sem interromper antes do tempo.</p>
+      </article>
+      <article class="card focus">
+        <h3>Pausas</h3>
+        <p>Respeitar integralmente a duração das pausas; silêncio também possui valor rítmico.</p>
+      </article>
+      <article class="card focus">
+        <h3>Velocidade</h3>
+        <p>Não aumentar o andamento antes de executar corretamente ritmo, notas e movimento.</p>
+      </article>
+      <article class="card focus">
+        <h3>Respiração</h3>
+        <p>Planejar a respiração sem interromper a pulsação ou modificar o valor das figuras.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="check">
+    <div class="section-title"><div class="num">12</div><h2>Checklist de revisão</h2></div>
+    <div class="card checklist">
+      <label><input type="checkbox"> Sei diferenciar leitura rítmica, leitura métrica e solfejo.</label>
+      <label><input type="checkbox"> Mantenho a pulsação sem acelerar ou atrasar.</label>
+      <label><input type="checkbox"> Executo corretamente os movimentos de solfejo em 2, 3 e 4.</label>
+      <label><input type="checkbox"> Compreendo o movimento de solfejo em 6 e o movimento alternativo.</label>
+      <label><input type="checkbox"> Consigo solfejar mantendo simultaneamente nota, altura e ritmo.</label>
+      <label><input type="checkbox"> Respeito integralmente notas longas e pausas.</label>
+      <label><input type="checkbox"> Consigo estudar com metrônomo sem perder a condução.</label>
+      <label><input type="checkbox"> Sei utilizar a clave do método do meu instrumento.</label>
+      <label><input type="checkbox"> Estou preparado para o repertório exigido na minha etapa.</label>
+    </div>
+  </section>
+</main>
+</div>
+
+<div class="footer">
+  Material de apoio para estudo do MSA — Solfejo. O conteúdo foi organizado para revisão rápida, preservando os termos centrais utilizados no método.
+</div>
+
+<script>
+function filterCards(){
+  const q=(document.getElementById('q').value||'').toLowerCase().trim();
+  document.querySelectorAll('section').forEach(sec=>{
+    if(!q){sec.classList.remove('hidden'); return;}
+    const hit=sec.innerText.toLowerCase().includes(q);
+    sec.classList.toggle('hidden', !hit);
+  });
+}
+</script>
+</body>
+</html>
