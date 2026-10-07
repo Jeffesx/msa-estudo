@@ -3,342 +3,613 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#6c5ce7">
-<title>MSA Kids Visual — Missão Musical</title>
+<meta name="theme-color" content="#5b46db">
+<title>MSA Kids — Jornada Musical</title>
 <style>
 :root{
- --bg:#fffaf3;--paper:#ffffff;--ink:#24333a;--muted:#63727b;--line:#e9e0d8;
- --purple:#6c5ce7;--purple2:#8e7df5;--blue:#1f8ef1;--green:#1bb67a;--yellow:#f7c948;--orange:#f39c4a;--pink:#ea4c89;--red:#ff6b6b;
- --shadow:0 10px 28px rgba(80,63,52,.10);
+ --bg:#f7f5ff;--paper:#fff;--ink:#1d2433;--muted:#687082;--line:#e3e0ef;
+ --purple:#5b46db;--purple2:#7a66f0;--blue:#3085e8;--green:#16a673;
+ --yellow:#f2be3e;--orange:#ef8d42;--pink:#dc4b91;--red:#e2574c;
+ --shadow:0 12px 30px rgba(61,49,120,.10)
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:
- radial-gradient(circle at 12% 0,#efeaff 0 11%,transparent 28%),
- radial-gradient(circle at 96% 14%,#e8f7ff 0 10%,transparent 26%),
- radial-gradient(circle at 88% 95%,#fff2c7 0 8%,transparent 20%),var(--bg);color:var(--ink);line-height:1.55}
-.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topin{max-width:1220px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--purple)}
-.noteLogo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#fff;font-size:24px;box-shadow:var(--shadow)}
-.home,.toolbar button{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;text-decoration:none;font-weight:850;color:#42535c;cursor:pointer}
-.search{flex:1;min-width:250px}
-.search input{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.wrap{max-width:1220px;margin:auto;padding:18px 16px 70px}
-.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#6c5ce7,#1f8ef1);color:#fff;border-radius:30px;padding:clamp(24px,5vw,54px);box-shadow:var(--shadow)}
-.hero h1{font-size:clamp(36px,7vw,74px);line-height:.97;letter-spacing:-.04em;margin:8px 0 12px}
-.hero p{margin:0;max-width:800px;font-size:clamp(16px,2vw,21px)}
-.hero .badge{display:inline-flex;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.26);padding:8px 12px;border-radius:999px;font-weight:850;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
-.heroArt{position:absolute;right:22px;bottom:12px;width:min(32vw,320px);opacity:.95}
-.dashboard{display:grid;grid-template-columns:1.1fr .9fr;gap:16px;margin:16px 0}
-.box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 6px 22px rgba(80,63,52,.06)}
-.box h2{margin:0 0 9px;font-size:21px;color:#35464f}
-.progressbar{height:14px;background:#ede8ff;border-radius:999px;overflow:hidden}
-.progressbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--pink));transition:.35s}
-.stars{font-size:24px;letter-spacing:3px}
-.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.pill{padding:6px 10px;border-radius:999px;font-size:12px;font-weight:850}
-.pill.msa{background:#e7f8ef;color:#087858} .pill.easy{background:#ebf5ff;color:#1366ad} .pill.play{background:#fff3ce;color:#8e6700} .pill.visual{background:#ffe7f1;color:#af225e}
-.phasegrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}
-.phasebtn{border:1px solid var(--line);background:#fff;border-radius:18px;padding:13px;text-align:left;cursor:pointer;box-shadow:0 5px 18px rgba(80,63,52,.05);transition:.18s}
-.phasebtn:hover{transform:translateY(-2px)}
-.phasebtn b{display:block;font-size:17px;color:var(--purple)} .phasebtn span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-.phasebtn.done{background:#eefbf5;border-color:#bfe8d6}
-.phase{scroll-margin-top:84px;margin:24px 0}
-.phaseCard{background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,1));border:1px solid var(--line);border-radius:26px;padding:18px;box-shadow:var(--shadow)}
-.phasehead{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;margin-bottom:12px}
-.badgeN{min-width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,var(--purple),var(--blue));display:grid;place-items:center;font-weight:950;color:#fff;font-size:22px;box-shadow:var(--shadow)}
-.phaseTitle h2{margin:0;font-size:clamp(22px,4vw,34px);color:#3b3a62}
-.phaseTitle small{color:#7a7d87;font-weight:850;letter-spacing:.06em}
-.phaseHeroArt{width:min(100%,240px)}
-.topicgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.topic{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 5px 18px rgba(80,63,52,.05)}
-.topic h3{margin:0 0 10px;font-size:17px;color:#4834d4}
-.visual{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:center;background:linear-gradient(135deg,#fff6dc,#fff);border:1px solid #fde4a8;border-radius:16px;padding:10px;margin-bottom:10px}
-.visualText{font-size:13px;color:#6d5840}
-.block{border-radius:14px;padding:11px 12px;margin-top:8px}
-.block b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.block.msa{background:#eaf8f2;border-left:4px solid var(--green)} .block.msa b{color:#087c59}
-.block.easy{background:#edf6ff;border-left:4px solid var(--blue)} .block.easy b{color:#1769aa}
-.block.play{background:#fff5d8;border-left:4px solid var(--yellow)} .block.play b{color:#8b6500}
-.quiz{margin-top:12px;background:linear-gradient(135deg,#fff,#faf8ff);border:1px dashed #c9c0ff;border-radius:18px;padding:16px;color:#000}
-.quiz h3{margin:0 0 8px;color:#000}
-.answers{display:grid;gap:7px;margin-top:10px}
-.answers button{text-align:left;border:1px solid #ddd8ff;background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;color:#000}
-.answers button:hover{background:#f4f1ff}
-.feedback{margin-top:8px;font-weight:850;min-height:24px}
-.finish{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:12px}
-.finish button{border:0;border-radius:12px;padding:10px 14px;background:var(--green);color:#fff;font-weight:900;cursor:pointer}
-.finish button.done{background:#59636a}
-.reviewOnly .block.play,.reviewOnly .quiz,.reviewOnly .visualText{display:none}
+body{margin:0;background:radial-gradient(circle at 8% 0,#ece7ff 0 10%,transparent 25%),radial-gradient(circle at 96% 20%,#e3f5ff 0 9%,transparent 24%),var(--bg);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);line-height:1.5}
+button{font:inherit;cursor:pointer}
 .hidden{display:none!important}
-.footer{margin-top:30px;text-align:center;color:var(--muted);font-size:13px}
-svg{max-width:100%;height:auto;display:block}
-@media(max-width:980px){.dashboard{grid-template-columns:1fr}.phasegrid{grid-template-columns:repeat(2,1fr)}.phasehead{grid-template-columns:auto 1fr}.phaseHeroArt{grid-column:1/-1;width:100%;max-width:280px}}
-@media(max-width:760px){.topicgrid{grid-template-columns:1fr}.visual{grid-template-columns:1fr}.hero{border-radius:22px}.heroArt{display:none}}
-@media(max-width:430px){.phasegrid{grid-template-columns:1fr}.wrap{padding-left:10px;padding-right:10px}}
-@media print{.top,.dashboard,.phasegrid,.quiz,.finish button{display:none!important}body{background:#fff}.topic,.phaseCard{box-shadow:none;break-inside:avoid}}
+.top{position:sticky;top:0;z-index:70;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topin{max-width:1200px;margin:auto;min-height:62px;padding:9px 15px;display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#fff;font-weight:950}
+.brand b{display:block;color:#4b38be} .brand span{font-size:11px;color:var(--muted)}
+.home{margin-left:auto;text-decoration:none;border:1px solid var(--line);background:#fff;padding:8px 11px;border-radius:10px;font-weight:850;color:#485064}
+.wrap{max-width:1200px;margin:auto;padding:18px 15px 70px}
+
+.hero{background:linear-gradient(135deg,#5b46db,#3085e8);color:#fff;border-radius:26px;padding:clamp(24px,5vw,48px);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"♪  ♫  ♩";position:absolute;right:4%;bottom:-12px;font-size:clamp(70px,13vw,160px);opacity:.08;font-weight:900;transform:rotate(-8deg)}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:900;color:#e7e2ff}
+.hero h1{font-size:clamp(36px,7vw,72px);line-height:.98;letter-spacing:-.04em;margin:8px 0 12px}
+.hero p{margin:0;max-width:780px;color:#edf2ff;font-size:clamp(15px,2vw,20px)}
+.heroRule{margin-top:14px;display:inline-block;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.23);padding:9px 12px;border-radius:12px;font-size:13px;font-weight:800}
+
+.playerBar{display:grid;grid-template-columns:1.1fr .9fr .9fr .9fr;gap:9px;margin:14px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:12px 14px;box-shadow:0 5px 18px rgba(61,49,120,.05)}
+.stat span{display:block;color:var(--muted);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+.stat b{display:block;font-size:21px;margin-top:3px;color:#3f356f}
+.xpTrack{height:8px;background:#ece9f8;border-radius:999px;overflow:hidden;margin-top:8px} .xpTrack i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--pink));transition:.3s}
+
+.sectionTitle{margin:22px 0 10px;font-size:22px;color:#39315f}
+.map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.level{border:2px solid var(--line);background:#fff;border-radius:19px;padding:14px;text-align:left;min-height:170px;transition:.18s;position:relative;overflow:hidden}
+.level:hover:not(:disabled){transform:translateY(-2px);box-shadow:var(--shadow);border-color:#b7aced}
+.level:disabled{opacity:.5;cursor:not-allowed;filter:grayscale(.25)}
+.level.done{border-color:#a9dfca;background:#f4fcf8}
+.level.active{border-color:var(--purple);background:#f8f6ff;box-shadow:0 0 0 3px #e9e4ff}
+.levelTop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.levelIcon{width:42px;height:42px;border-radius:13px;background:#eeeaff;color:var(--purple);display:grid;place-items:center;font-size:22px;font-weight:950}
+.level.done .levelIcon{background:#e4f7ee;color:var(--green)}
+.lock{font-size:17px;color:#9a9fb0}
+.level small{display:block;margin-top:11px;color:#85899a;font-weight:850} .level h3{font-size:17px;margin:3px 0 5px;color:#3e356e} .level p{font-size:12px;color:var(--muted);margin:0}
+.levelStars{margin-top:10px;color:#d99b06;letter-spacing:2px;font-size:17px}
+
+.badges{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.badge{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;text-align:center;opacity:.45}
+.badge.unlocked{opacity:1;border-color:#ead393;background:#fffaf0;box-shadow:0 5px 18px rgba(120,91,20,.06)}
+.badgeIcon{font-size:27px} .badge b{display:block;color:#655221;font-size:13px} .badge span{font-size:10px;color:var(--muted)}
+
+.mission{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+.missionHead{padding:18px 20px;background:linear-gradient(135deg,#f5f2ff,#eef8ff);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:13px}
+.missionNum{width:48px;height:48px;border-radius:15px;background:var(--purple);color:#fff;display:grid;place-items:center;font-weight:950;font-size:21px}
+.missionHead h2{margin:0;color:#3f356f;font-size:23px} .missionHead p{margin:3px 0 0;color:var(--muted);font-size:12px}
+
+.missionFlow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px 16px;background:#fff;border-bottom:1px solid var(--line)}
+.flowStep{border:1px solid var(--line);background:#f8f8fc;border-radius:14px;padding:11px 12px;display:flex;gap:9px;align-items:center}
+.flowStep .num{width:29px;height:29px;border-radius:10px;background:#e8e5f6;color:#615b78;display:grid;place-items:center;font-weight:950;flex:0 0 auto}
+.flowStep b{display:block;font-size:12px;color:#4c4760}.flowStep span{display:block;font-size:10px;color:var(--muted)}
+.flowStep.active{border-color:#a99df2;background:#f6f3ff}.flowStep.active .num{background:var(--purple);color:#fff}
+.flowStep.done{border-color:#a9dfca;background:#f3fbf7}.flowStep.done .num{background:var(--green);color:#fff}
+.stepSection{padding:18px;border-top:1px solid var(--line)}
+.stepHead{display:flex;gap:11px;align-items:flex-start;margin-bottom:13px}
+.stepBadge{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:#eeeaff;color:var(--purple);font-weight:950;flex:0 0 auto}
+.stepHead h3{margin:0;color:#3f356f;font-size:20px}.stepHead p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.activityNotice{background:#fff5d7;border:1px solid #f1d37b;border-radius:14px;padding:12px 13px;margin-bottom:12px;color:#604c12;font-size:13px}
+.activityNotice strong{display:block;margin-bottom:3px}
+.activitiesGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.activityCard{border:1px solid var(--line);border-radius:15px;padding:13px;background:#fff}
+.activityCard.done{border-color:#8fd2b4;background:#f4fbf8}
+.activityCard h4{margin:0 0 7px;color:#4a3abd;font-size:14px}
+.activityText{font-size:12px;color:#394052;background:#fff9e8;border-left:4px solid var(--yellow);padding:9px 10px;border-radius:9px;margin-bottom:10px}
+.activityCheck{display:flex;align-items:flex-start;gap:8px;font-size:12px;font-weight:850;color:#33384a;cursor:pointer}
+.activityCheck input{width:18px;height:18px;margin-top:1px;accent-color:var(--green)}
+
+.activityRecord{margin:10px 0 9px;padding:10px;border:1px solid #dcd8f0;background:#faf9ff;border-radius:11px}
+.activityRecord label{display:block;font-size:11px;font-weight:900;color:#4c3f9c;margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.activityRecord input,.activityRecord textarea{width:100%;border:1px solid #ccc7e4;border-radius:9px;background:#fff;color:#222;padding:9px 10px;font:inherit;font-size:12px;outline:none}
+.activityRecord textarea{min-height:70px;resize:vertical}
+.activityRecord input:focus,.activityRecord textarea:focus{border-color:var(--purple);box-shadow:0 0 0 2px #e8e3ff}
+.activityRecord small{display:block;margin-top:5px;color:var(--muted);font-size:10px}
+.recordSaved{color:var(--green)!important;font-weight:850}
+.activityCheck input:disabled+span{color:#9a9dac}
+.activitySummary{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:13px;padding:12px;border-radius:13px;background:#f8f7fc;border:1px solid var(--line)}
+.activitySummary strong{color:#3d3471}
+.bigChallengeBtn{border:0;border-radius:13px;padding:12px 17px;font-weight:950;background:var(--purple);color:#fff}
+.bigChallengeBtn:disabled{background:#c7c3d7;color:#fff;cursor:not-allowed}
+.challengeSection{background:#fcfbff}
+.challengeGate{border:2px dashed #b9b1e4;border-radius:17px;padding:22px;text-align:center;background:#f8f6ff}
+.challengeGate .gateIcon{font-size:35px}.challengeGate h3{margin:7px 0;color:#443a78;font-size:21px}.challengeGate p{max-width:600px;margin:0 auto;color:var(--muted);font-size:13px}
+.challengeGate strong{color:#5544c6}
+.challengeReady{border:2px solid #9d91ee;border-radius:17px;padding:15px;background:linear-gradient(135deg,#f6f2ff,#eef8ff);margin-bottom:12px}
+.challengeReady b{display:block;color:#4636b8;font-size:18px}.challengeReady span{font-size:12px;color:#5f6678}
+.tabs{display:flex;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line);overflow:auto;background:#fff}
+.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#535a6b;padding:8px 11px;border-radius:999px;font-weight:850;font-size:12px}
+.tab.active{background:var(--purple);border-color:var(--purple);color:#fff}
+.missionBody{padding:18px}
+
+.topicCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.topic{border:1px solid var(--line);border-radius:16px;padding:14px;background:#fff}
+.topic h3{margin:0 0 10px;color:#4937bb;font-size:16px}
+.block{border-radius:11px;padding:10px 11px;margin-top:7px;font-size:12px}
+.block b{display:block;text-transform:uppercase;letter-spacing:.05em;font-size:10px;margin-bottom:3px}
+.msa{background:#eaf8f2;border-left:4px solid var(--green)} .msa b{color:#087758}
+.easy{background:#edf6ff;border-left:4px solid var(--blue)} .easy b{color:#1767ad}
+.try{background:#fff5d7;border-left:4px solid var(--yellow)} .try b{color:#876400}
+
+.challengeIntro{background:#f8f6ff;border:1px solid #ddd7ff;border-radius:14px;padding:13px;margin-bottom:12px}
+.challengeIntro b{color:#4c3bc0}
+.challengeCard{border:1px solid var(--line);border-radius:16px;padding:15px;margin-top:10px;background:#fff;color:#000}
+.challengeCard h3{color:#000;margin:0 0 10px;font-size:17px}
+.opts{display:grid;gap:7px}
+.opt{border:1px solid #dfe2e8;background:#fff;border-radius:11px;padding:10px 11px;text-align:left;color:#000}
+.opt:hover{background:#f7f7fb}
+.opt.selected{border-color:var(--purple);background:#f0edff;box-shadow:0 0 0 2px #e2dcff}
+.opt.correct{border-color:#79caa7;background:#eaf8f2}
+.opt.wrong{border-color:#e19a93;background:#fff0ee}
+.feedback{min-height:22px;margin-top:8px;font-size:12px;font-weight:850;color:#000}
+.challengeFooter{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}
+.starsBig{font-size:25px;letter-spacing:3px;color:#d99b06}
+.btn{border:0;border-radius:11px;padding:10px 13px;font-weight:900}
+.btn.primary{background:var(--purple);color:#fff} .btn.secondary{background:#eceaf5;color:#4d4863} .btn.green{background:var(--green);color:#fff}
+
+.win{text-align:center;padding:25px 15px}
+.trophy{font-size:65px;animation:pop .5s ease} @keyframes pop{0%{transform:scale(.5)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.win h2{font-size:28px;color:#3d3471;margin:8px 0} .win p{color:var(--muted);max-width:520px;margin:0 auto 15px}
+.confetti{font-size:25px;letter-spacing:8px}
+
+.resetRow{display:flex;justify-content:flex-end;margin-top:13px}
+.footer{margin-top:28px;text-align:center;color:var(--muted);font-size:11px}
+
+@media(max-width:950px){.map{grid-template-columns:repeat(3,1fr)}.playerBar{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.map{grid-template-columns:repeat(2,1fr)}.topicCards,.activitiesGrid{grid-template-columns:1fr}.badges{grid-template-columns:repeat(2,1fr)}.missionFlow{grid-template-columns:1fr}.flowStep{padding:9px 10px}}
+@media(max-width:480px){.map{grid-template-columns:1fr}.playerBar{grid-template-columns:1fr 1fr}.wrap{padding-left:10px;padding-right:10px}.hero{border-radius:20px}}
+@media print{.top,.playerBar,.map,.badges,.challengeFooter,.resetRow{display:none!important}body{background:#fff}.mission{box-shadow:none}}
 </style>
 </head>
 <body>
 <header class="top">
   <div class="topin">
-    <div class="logo"><div class="noteLogo">♪</div><div>MSA Kids Visual<br><small style="font-weight:700;color:#75828a">explicações com cores e imagens</small></div></div>
+    <div class="logo">♪</div>
+    <div class="brand"><b>MSA Kids</b><span>Jornada Musical — Fases 1 a 12</span></div>
     <a class="home" href="../">← Portal</a>
-    <div class="search"><input id="search" type="search" placeholder="Buscar: compasso, síncopa, andamento..." aria-label="Buscar"></div>
-    <div class="toolbar"><button id="reviewBtn">Modo revisão rápida</button></div>
   </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
-    <div class="badge">MSA • 16 fases • estudo lúdico</div>
-    <h1>Aprender música com cores, imagens e sentido.</h1>
-    <p>Agora o material para crianças tem <strong>explicações visuais</strong>, cartões coloridos e pequenas ilustrações para ajudar a entender mais rápido. Os <strong>termos e significados do MSA foram preservados</strong>; o restante foi organizado de forma mais leve e divertida.</p>
-    <div style="margin-top:14px;background:rgba(255,255,255,.15);display:inline-block;padding:10px 14px;border-radius:14px;font-weight:800">🎯 Dica: leia o quadro “No MSA”, depois o quadro “Jeito fácil de entender” e por fim faça a atividade.</div>
-    <div class="heroArt">
-      <svg viewBox="0 0 260 220" aria-hidden="true">
-        <defs>
-          <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fff8cf"/></linearGradient>
-        </defs>
-        <rect x="18" y="30" width="180" height="130" rx="18" fill="url(#g1)" opacity=".95"/>
-        <rect x="30" y="56" width="100" height="8" rx="4" fill="#b6c3ff"/>
-        <rect x="30" y="74" width="140" height="8" rx="4" fill="#b6c3ff"/>
-        <rect x="30" y="92" width="120" height="8" rx="4" fill="#b6c3ff"/>
-        <circle cx="62" cy="92" r="12" fill="#6c5ce7"/><rect x="72" y="49" width="5" height="43" rx="2.5" fill="#6c5ce7"/>
-        <circle cx="150" cy="74" r="12" fill="#1bb67a"/><rect x="160" y="34" width="5" height="40" rx="2.5" fill="#1bb67a"/>
-        <path d="M200 92c12-18 40-20 47 0" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <path d="M208 126c8 12 27 12 35 0" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <circle cx="206" cy="112" r="5" fill="#fff"/><circle cx="245" cy="112" r="5" fill="#fff"/>
-        <circle cx="58" cy="188" r="16" fill="#ffdf72"/><text x="58" y="193" text-anchor="middle" font-size="18">♫</text>
-        <circle cx="98" cy="176" r="14" fill="#ffa0c7"/><text x="98" y="181" text-anchor="middle" font-size="16">♪</text>
-        <circle cx="132" cy="193" r="13" fill="#8fe3ff"/><text x="132" y="198" text-anchor="middle" font-size="14">♩</text>
-      </svg>
+    <div class="eyebrow">Gamificação • Método Simplificado de Aprendizagem Musical</div>
+    <h1>Jornada Musical</h1>
+    <p>Complete <strong>12 missões</strong>, aprenda os temas do MSA e desbloqueie novos mundos. Cada missão tem estudo, atividade e um desafio com 3 perguntas.</p>
+    <div class="heroRule">🏆 Complete uma fase para liberar a próxima • Ganhe até 3 estrelas por missão</div>
+  </section>
+
+  <section class="playerBar">
+    <div class="stat"><span>Progresso</span><b id="progressLabel">0 / 12 fases</b><div class="xpTrack"><i id="progressBar"></i></div></div>
+    <div class="stat"><span>XP acumulado</span><b id="xpLabel">0 XP</b></div>
+    <div class="stat"><span>Estrelas</span><b id="starsLabel">0 ★</b></div>
+    <div class="stat"><span>Nível atual</span><b id="levelLabel">Fase 1</b></div>
+  </section>
+
+  <h2 class="sectionTitle">🗺️ Mapa da Jornada</h2>
+  <section id="map" class="map"></section>
+
+  <h2 class="sectionTitle">🏅 Conquistas</h2>
+  <section class="badges">
+    <div class="badge" id="badge3"><div class="badgeIcon">🥉</div><b>Aprendiz Musical</b><span>Complete 3 fases</span></div>
+    <div class="badge" id="badge6"><div class="badgeIcon">🥈</div><b>Explorador do MSA</b><span>Complete 6 fases</span></div>
+    <div class="badge" id="badge9"><div class="badgeIcon">🥇</div><b>Mestre do Ritmo</b><span>Complete 9 fases</span></div>
+    <div class="badge" id="badge12"><div class="badgeIcon">🏆</div><b>Guardião da Fase 12</b><span>Complete a jornada</span></div>
+  </section>
+
+  <section id="mission" class="mission">
+    <div class="missionHead">
+      <div id="missionNum" class="missionNum">1</div>
+      <div><h2 id="missionTitle">Missão 1</h2><p id="missionDesc"></p></div>
+    </div>
+
+    <div class="missionFlow">
+      <div id="flowStudy" class="flowStep active">
+        <div class="num">1</div><div><b>Estude os temas</b><span>Leia o conteúdo da fase</span></div>
+      </div>
+      <div id="flowActivity" class="flowStep">
+        <div class="num">2</div><div><b>Execute as atividades</b><span>Faça cada missão prática</span></div>
+      </div>
+      <div id="flowChallenge" class="flowStep">
+        <div class="num">3</div><div><b>Faça o desafio</b><span>Responda às 3 perguntas</span></div>
+      </div>
+    </div>
+
+    <div class="stepSection">
+      <div class="stepHead"><div class="stepBadge">1</div><div><h3>Estude os temas da fase</h3><p>Primeiro, leia o conteúdo do MSA e a explicação facilitada.</p></div></div>
+      <div id="studyPane"></div>
+    </div>
+
+    <div class="stepSection">
+      <div class="stepHead"><div class="stepBadge">2</div><div><h3>Execute as atividades práticas</h3><p><strong>Você precisa realmente realizar cada atividade abaixo.</strong> Quando houver um campo de registro, escreva o resultado da atividade e depois marque como concluída.</p></div></div>
+      <div class="activityNotice"><strong>⚠️ Esta etapa é obrigatória.</strong> O desafio só será liberado depois que todas as atividades práticas forem concluídas e, quando houver campo de registro, ele também estiver preenchido.</div>
+      <div id="activityPane"></div>
+    </div>
+
+    <div id="challengeSection" class="stepSection challengeSection">
+      <div class="stepHead"><div class="stepBadge">3</div><div><h3>Desafio da fase</h3><p>Depois das atividades, responda às 3 perguntas para concluir a missão e liberar a próxima fase.</p></div></div>
+      <div id="challengePane"></div>
     </div>
   </section>
 
-  <section class="dashboard">
-    <div class="box">
-      <h2>⭐ Minha jornada musical</h2>
-      <div id="stars" style="font-size:24px;letter-spacing:3px">☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆</div>
-      <div class="progressbar"><span id="progress"></span></div>
-      <p id="progressText" style="margin:8px 0 0;color:var(--muted)">0 de 16 fases concluídas.</p>
-    </div>
-    <div class="box">
-      <h2>🧩 Legenda dos cartões</h2>
-      <div class="legend">
-        <span class="pill visual">Imagem / ideia visual</span>
-        <span class="pill msa">No MSA</span>
-        <span class="pill easy">Jeito fácil de entender</span>
-        <span class="pill play">Vamos experimentar</span>
-      </div>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-        <button class="home" onclick="resetProgress()">Reiniciar progresso</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="phasegrid" id="phaseGrid"></div>
-  <div id="content"></div>
-  <div class="footer">Material infantil de apoio ao estudo do MSA — com cartões visuais, cores e ilustrações educativas.</div>
+  <div class="resetRow"><button class="btn secondary" onclick="resetGame()">Reiniciar jornada</button></div>
+  <div class="footer">Fluxo da missão: 1) estudar, 2) executar todas as atividades práticas, 3) fazer o desafio. Marque uma atividade como concluída somente depois de realizá-la.</div>
 </main>
 
 <script>
-const phases = [{"n": 1, "title": "Fase 1 — Conhecendo a música", "topics": [["1.1 — MÚSICA E SOM", "Música é a arte de expressar sentimentos por meio de sons coordenados, produzidos pela voz ou por instrumento musical. Som é tudo o que ouvimos.", "Música é uma conversa feita com sons. O som é a matéria-prima dessa conversa.", "Feche os olhos por 20 segundos e tente identificar 3 sons diferentes ao seu redor."], ["1.2 — ELEMENTOS DA MÚSICA", "Os elementos mais importantes da música são MELODIA, HARMONIA e RITMO.", "Melodia é a sequência que conseguimos cantar; harmonia acontece quando sons diferentes soam juntos; ritmo organiza os sons no tempo.", "Bata palmas em um pulso constante e cante uma pequena sequência de notas."], ["1.3 — PROPRIEDADES DO SOM", "As principais propriedades do som são TIMBRE, DURAÇÃO, ALTURA e INTENSIDADE.", "Timbre ajuda a reconhecer quem produz o som; duração mostra se ele é curto ou longo; altura indica grave ou agudo; intensidade indica fraco ou forte.", "Compare a mesma nota tocada por duas vozes ou instrumentos diferentes."], ["1.4 — NOTAS MUSICAIS", "As notas musicais representam os sons na escrita musical. No Brasil são: Dó, Ré, Mi, Fá, Sol, Lá e Si.", "São os nomes que usamos para organizar as alturas dos sons.", "Fale em ordem: Dó–Ré–Mi–Fá–Sol–Lá–Si e depois volte."], ["1.5 — PENTAGRAMA (PAUTA MUSICAL)", "Pentagrama ou pauta musical é o conjunto de 5 linhas e 4 espaços onde são escritas as notas musicais.", "É como uma escada musical: a posição da nota ajuda a mostrar sua altura.", "Desenhe 5 linhas paralelas e conte as linhas e espaços de baixo para cima."], ["1.6 — CLAVES", "Clave é um sinal que determina o nome da nota escrita em sua linha de referência. No MSA aparecem as claves de Sol, Dó e Fá.", "A clave funciona como uma placa de identificação: ela ajuda a descobrir o nome das notas no pentagrama.", "Procure no seu método qual clave é usada pelo seu instrumento."]]}, {"n": 2, "title": "Fase 2 — Figuras, compasso e pulsação", "topics": [["2.1 — FIGURAS MUSICAIS", "A duração do som e do silêncio é escrita com figuras musicais. Há figuras de som e figuras de silêncio (pausas), relacionadas pelo número de equivalência.", "Cada figura ocupa uma quantidade de tempo. As pausas ocupam o mesmo tempo, mas em silêncio.", "Escolha uma figura longa e divida seu valor em figuras menores."], ["2.2 — COMPASSO", "Compasso é a divisão de um trecho musical em séries regulares de tempos.", "É como separar a música em pequenas caixinhas de tempo.", "Marque uma pulsação constante e agrupe as batidas de 4 em 4."], ["2.3 — BARRAS DE COMPASSO SIMPLES, DUPLA E FINAL", "As barras de compasso organizam e separam trechos da música. O MSA apresenta barra simples, barra dupla e barra final.", "A barra simples separa compassos; a dupla marca divisões importantes; a final mostra que a peça terminou.", "Pegue um hino e procure os três tipos de barras."], ["2.4 — FÓRMULA DE COMPASSO EM 4", "A fórmula de compasso informa a quantidade de tempos e a figura que representa cada tempo. Nas fórmulas em 4 estudadas aqui, cada compasso possui quatro tempos.", "O número de cima ajuda a contar os tempos. O número de baixo mostra a figura de referência.", "Conte 1–2–3–4 repetidamente, sempre com a mesma distância entre as contagens."], ["2.5 — RITMO E PULSAÇÃO", "Ritmo é a distribuição dos sons no espaço de tempo. Pulsação são batidas constantes que servem de referência para organizar o ritmo.", "A pulsação é como um relógio. O ritmo acontece por cima desse relógio.", "Bata palmas iguais e fale “TA — TA TA — TA”."], ["2.6 — FORMA DE REALIZAÇÃO DOS EXERCÍCIOS RÍTMICOS", "O MSA orienta formas de marcar a pulsação e realizar os exercícios rítmicos com movimentos regulares.", "O importante é que o corpo ajude a manter o tempo, e não atrapalhe.", "Faça batidas iguais com a mão enquanto lê um exercício rítmico."]]}, {"n": 3, "title": "Fase 3 — Leitura e solfejo", "topics": [["3.1 — ENDECAGRAMA", "O endecagrama permite visualizar a relação das notas entre as claves em um sistema de 11 linhas.", "Ele ajuda a perceber que uma mesma nota pode aparecer escrita de formas diferentes conforme a clave.", "Escolha uma nota e observe onde ela aparece nas claves estudadas."], ["3.2 — LEITURA RÍTMICA, LEITURA MÉTRICA E SOLFEJO", "Na leitura rítmica fala-se “TA” executando o ritmo. Na leitura métrica falam-se os nomes das notas no ritmo, sem cantar a altura. No solfejo cantam-se as notas na altura e no ritmo escritos.", "São três degraus: primeiro o ritmo; depois nome + ritmo; por fim nome + altura + ritmo.", "Pegue uma linha musical e faça as três etapas, uma de cada vez."], ["3.3 — MOVIMENTOS DE CONDUÇÃO PARA SOLFEJO", "Os movimentos de condução representam visualmente a pulsação determinada pela fórmula de compasso.", "A mão mostra onde cada tempo acontece.", "Treine o movimento sem cantar; depois acrescente o solfejo."], ["3.4 — MOVIMENTO DE SOLFEJO EM 4", "O movimento em 4 representa os quatro tempos do compasso, com pontos definidos para cada tempo.", "Imagine quatro lugares que a mão precisa visitar sempre no mesmo tempo.", "Conte 1–2–3–4 e faça o movimento mantendo todos os tempos iguais."], ["3.5 — METRÔNOMO", "Metrônomo é um equipamento que produz cliques sonoros em velocidade ajustável e ajuda a determinar e manter a velocidade da música ou dos exercícios rítmicos.", "É um relógio musical que não deixa a pulsação correr ou ficar para trás.", "Comece devagar e só aumente a velocidade quando conseguir manter regularidade."]]}, {"n": 4, "title": "Fase 4 — Ligaduras, ponto e intervalos", "topics": [["4.1 — LIGADURA", "Ligadura é uma linha curva sobre ou abaixo de duas ou mais notas. O MSA diferencia ligadura de valor e ligadura de portamento.", "Na ligadura de valor, sons da mesma altura são prolongados. Na de portamento, notas diferentes são executadas de forma ligada.", "Procure no hinário uma ligadura entre notas iguais e outra entre notas diferentes."], ["4.2 — PONTO DE AUMENTO", "O ponto de aumento, colocado à direita da figura, aumenta metade de sua duração.", "Se uma figura vale 2, o ponto acrescenta mais 1. Ela passa a durar 3.", "Faça contas simples: valor da figura + metade do valor."], ["4.3 — INTERVALO", "Intervalo é a distância entre dois sons. Pode ser melódico quando os sons são sucessivos e harmônico quando soam simultaneamente.", "Intervalo mede o espaço musical entre uma nota e outra.", "Toque ou cante duas notas diferentes e perceba se elas aparecem uma depois da outra ou juntas."], ["4.4 — FÓRMULA DE COMPASSO EM 3", "A fórmula de compasso em 3 determina que o compasso terá três tempos.", "A contagem principal é 1–2–3.", "Conte três tempos e reinicie sempre no 1."], ["4.5 — MOVIMENTO DE SOLFEJO EM 3", "O movimento em 3 representa visualmente os três tempos do compasso.", "A mão percorre três pontos e volta ao começo.", "Faça o movimento dizendo 1–2–3 sem variar a velocidade."], ["4.6 — FÓRMULA DE COMPASSO EM 2", "A fórmula de compasso em 2 determina que o compasso terá dois tempos.", "A contagem principal é 1–2.", "Marque duas batidas iguais e repita."], ["4.7 — MOVIMENTO DE SOLFEJO EM 2", "O movimento em 2 representa visualmente os dois tempos do compasso.", "É um movimento simples de ida e volta entre os dois tempos.", "Conte 1–2 e confira se o segundo tempo não fica mais curto que o primeiro."]]}, {"n": 5, "title": "Fase 5 — Tercinas, fermata e compasso em 6", "topics": [["5.1 — TERCINAS", "Tercinas são grupos de 3 figuras colocadas no lugar em que normalmente caberiam 2 figuras do mesmo valor.", "Você precisa encaixar três sons iguais dentro do espaço que normalmente seria dividido em dois.", "Fale devagar “1-2-3” de maneira perfeitamente igual dentro de uma única pulsação maior."], ["5.2 — FERMATA", "Fermata é um sinal colocado sobre ou abaixo de uma nota que indica prolongamento do seu valor.", "A nota espera um pouco mais, mas não é para perder o andamento da música.", "Sustente uma nota com controle e depois retome a pulsação corretamente."], ["5.3 — FÓRMULA DE COMPASSO EM 6", "As fórmulas de compasso em 6 estudadas no MSA organizam seis pulsos no compasso.", "Antes de aprender o agrupamento em compasso composto, você aprende a sentir e conduzir os seis pulsos.", "Conte 1–2–3–4–5–6 mantendo tudo igual."], ["5.4 — MOVIMENTO DE SOLFEJO EM 6", "O movimento em 6 representa os seis pulsos do compasso.", "Cada pulso recebe um ponto na condução.", "Treine só a mão primeiro e depois faça o solfejo."], ["5.5 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 6", "Em andamentos mais rápidos, o MSA apresenta um movimento alternativo para conduzir o compasso em 6 de forma agrupada.", "Quando a música fica rápida, a mão não precisa fazer seis movimentos grandes; os pulsos podem ser agrupados conforme o método.", "Compare a condução completa e a alternativa em velocidades diferentes."]]}, {"n": 6, "title": "Fase 6 — Tons, acidentes e escalas", "topics": [["6.1 — TOM E SEMITOM", "Semitom é o menor intervalo entre dois sons na música ocidental. Tom é formado por dois semitons.", "Dois meios passos formam um passo inteiro.", "No teclado, observe notas vizinhas para perceber semitons e compare com um tom."], ["6.2 — ACIDENTES — SUSTENIDO E BEMOL", "Acidentes são sinais que modificam a altura da nota. O sustenido eleva e o bemol abaixa a altura em um semitom.", "Sustenido sobe meio passo; bemol desce meio passo.", "Escolha uma nota natural e descubra sua versão com sustenido e com bemol."], ["6.3 — ESCALAS", "Escala é uma sequência organizada de notas em ordem de altura.", "É como subir ou descer uma escada usando notas.", "Cante uma escala subindo e depois descendo."], ["6.4 — ESCALAS DIATÔNICAS", "As escalas diatônicas organizam as notas segundo uma sequência própria de tons e semitons.", "Não é qualquer sequência: os tons e semitons aparecem em lugares determinados.", "Marque em uma escala onde estão os semitons."], ["6.5 — ESCALAS MAIORES", "Escalas maiores seguem a organização de tons e semitons apresentada pelo MSA para formar o modo maior.", "A posição dos semitons é o que ajuda a formar corretamente a escala maior.", "Compare Dó Maior com outra escala maior e observe que a estrutura é mantida."], ["6.6 — ESCALAS MAIORES COM SUSTENIDOS", "Algumas escalas maiores precisam de sustenidos para conservar a organização correta de tons e semitons.", "Os sustenidos ajustam certas notas para que a escala continue sendo maior.", "Observe uma escala com sustenidos e localize quais notas foram alteradas."], ["6.7 — ESCALAS MAIORES COM BEMÓIS", "Algumas escalas maiores precisam de bemóis para conservar a organização correta de tons e semitons.", "Os bemóis também ajustam a escala para manter sua estrutura maior.", "Observe uma escala com bemóis e localize quais notas foram alteradas."]]}, {"n": 7, "title": "Fase 7 — Armadura e compassos em 9 e 12", "topics": [["7.1 — ARMADURA DE CLAVE", "Armadura de clave é o conjunto de acidentes colocados junto à clave para indicar quais notas serão alteradas de forma regular na música.", "Em vez de escrever o mesmo sustenido ou bemol toda hora, a armadura avisa isso logo no começo.", "Escolha uma armadura e diga quais nomes de notas serão alterados."], ["7.2 — FÓRMULA DE COMPASSO EM 9", "A fórmula de compasso em 9 organiza nove pulsos no compasso.", "Você aprende a perceber os nove pulsos antes de usar a condução agrupada.", "Conte 1 até 9 sem acelerar."], ["7.3 — MOVIMENTO DE SOLFEJO EM 9", "O movimento em 9 representa os nove pulsos da fórmula de compasso.", "A condução ajuda a localizar cada pulso.", "Treine o movimento sem notas e depois acrescente o solfejo."], ["7.4 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 9", "Em andamentos mais rápidos, o MSA apresenta uma forma alternativa de conduzir o compasso em 9 por agrupamento.", "A mão passa a mostrar grupos maiores em vez de nove movimentos separados.", "Compare o movimento completo com o alternativo."], ["7.5 — FÓRMULA DE COMPASSO EM 12", "A fórmula de compasso em 12 organiza doze pulsos no compasso.", "São doze pulsos que precisam permanecer proporcionais.", "Conte 1 até 12 mantendo a mesma pulsação."], ["7.6 — MOVIMENTO DE SOLFEJO EM 12", "O movimento em 12 representa os doze pulsos do compasso.", "Ele ajuda a visualizar onde cada pulso acontece.", "Treine devagar antes de acrescentar notas."], ["7.7 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 12", "Em andamentos mais rápidos, o MSA apresenta uma condução alternativa para o compasso em 12.", "Os doze pulsos são percebidos dentro de grupos maiores.", "Use o metrônomo e compare a sensação da condução completa e da alternativa."]]}, {"n": 8, "title": "Fase 8 — Tonalidade e acidentes ocorrentes", "topics": [["8.1 — TONALIDADE", "Tonalidade é a organização da composição musical em relação à nota principal da escala (I — Tônica). Quando uma peça utiliza essencialmente as notas de uma escala específica, dizemos que ela está na tonalidade dessa escala.", "A tonalidade mostra qual é o centro da música, a nota para a qual tudo parece querer voltar.", "Observe a armadura de clave e identifique qual escala maior corresponde a ela."], ["8.2 — ACIDENTES OCORRENTES E DE PRECAUÇÃO", "Acidentes ocorrentes são colocados à esquerda de uma nota e alteram essa nota e as demais de mesmo nome e mesma altura dentro daquele compasso. O MSA também apresenta dobrado sustenido, dobrado bemol e bequadro.", "É uma mudança que aparece durante a música, dentro do compasso. O bequadro cancela uma alteração.", "Marque num compasso até onde o efeito de um acidente ocorrente deve ser considerado."]]}, {"n": 9, "title": "Fase 9 — Repetição", "topics": [["9.1 — BARRA DE COMPASSO — REPETIÇÃO", "A barra de início de repetição e a barra de final de repetição (ritornello) delimitam a seção que deve ser repetida. O MSA também apresenta casas de ritornello numeradas.", "Quando aparecem os sinais de repetição, você volta e toca novamente o trecho indicado. As casas 1 e 2 mostram finais diferentes para cada passagem.", "Desenhe uma sequência A–B–C com repetição e mostre em que ponto você voltaria."]]}, {"n": 10, "title": "Fase 10 — Dinâmica", "topics": [["10.1 — DINÂMICA", "Dinâmica é a variação da intensidade do som de maneira gradual, tanto para uma intensidade mais forte quanto para uma intensidade mais fraca. O MSA apresenta gradações como piano, forte, pianissimo, fortissimo, crescendo e decrescendo.", "Dinâmica é controlar o volume musical com intenção, sem mudar o ritmo.", "Toque ou cante uma mesma frase começando suave e aumentando gradualmente; depois faça o contrário."]]}, {"n": 11, "title": "Fase 11 — Acento métrico e tipos de compasso", "topics": [["11.1 — ACENTO MÉTRICO", "Acento métrico é a acentuação forte ou fraca dos tempos do compasso. Ele varia conforme a fórmula de compasso e não deve ser literalmente executado aumentando ou diminuindo o volume.", "É uma sensação natural de apoio dentro do compasso. Você sente o tempo forte sem precisar bater mais forte nele.", "No 4/4, perceba: 1º tempo forte, 2º fraco, 3º meio forte e 4º fraco."], ["11.2 — COMPASSO SIMPLES", "Compasso simples é aquele em que a Unidade de Tempo é uma figura simples, que pode ser dividida em duas partes iguais (subdivisão binária). Nos hinos, os números superiores 2, 3 ou 4 identificam compassos simples.", "Cada tempo pode ser dividido em duas partes iguais.", "Pegue um tempo e diga 1-e para sentir duas partes iguais."], ["11.3 — COMPASSO COMPOSTO", "Compasso composto é aquele em que cada tempo pode ser dividido em três pulsos iguais (subdivisão ternária de cada tempo). Nos hinos, aparecem fórmulas com 6, 9 ou 12 no número superior.", "Cada tempo grande guarda três pulsações menores dentro dele.", "Fale 1-la-li, 2-la-li mantendo os três pulsos iguais em cada tempo."], ["11.4 — COMPASSOS ALTERNADOS", "Compassos alternados são formados pela junção de duas ou mais fórmulas de compasso diferentes, aplicadas alternadamente a cada compasso.", "A regra de contagem muda de um compasso para o próximo e depois pode voltar.", "Imagine um compasso em 9 seguido por um em 6 e identifique cada fórmula antes de começar."]]}, {"n": 12, "title": "Fase 12 — Síncopa e contratempo", "topics": [["12.1 — SÍNCOPA", "A síncopa acontece quando um som é articulado no tempo fraco ou na parte fraca de um tempo e se prolonga sobre o tempo forte ou parte forte seguinte. O acento forte que deveria surgir é suprimido. O MSA diferencia síncopa regular e irregular.", "A nota começa numa parte fraca e continua passando pela parte forte, criando um deslocamento do acento métrico natural.", "Bata uma pulsação constante e sustente um som que começou entre duas batidas até atravessar a próxima."], ["12.2 — CONTRATEMPO", "O contratempo ocorre quando há notas executadas em tempo fraco ou parte fraca do tempo, ficando os tempos fortes ou partes fortes precedidos por pausas. É regular quando pausa e nota têm a mesma duração e irregular quando têm durações diferentes.", "Primeiro vem o silêncio na parte forte; depois o som entra na parte fraca.", "Marque duas partes: na primeira fique em silêncio, na segunda diga TA."]]}, {"n": 13, "title": "Fase 13 — Ritmos iniciais", "topics": [["13.1 — RITMOS INICIAIS", "Os ritmos iniciais localizam-se apenas no início da partitura musical e podem ser classificados como tético, anacrúsico e acéfalo.", "Aqui você aprende a descobrir de que jeito a música começa.", "Antes de tocar um hino, observe se o primeiro som está no primeiro tempo, antes do primeiro compasso ou depois de uma parte inicial em silêncio."], ["TÉTICO", "Tético é o ritmo que se inicia com som no primeiro tempo do primeiro compasso; a primeira nota está no tempo forte do primeiro compasso.", "A música começa exatamente no 1.", "Conte 1–2–3–4 e faça o primeiro som junto com o 1."], ["ANACRÚSICO", "Anacrúsico é o ritmo em que as notas iniciais, chamadas anacruses, precedem o primeiro compasso.", "Algumas notas aparecem antes de chegar ao primeiro tempo forte do primeiro compasso.", "Conte a preparação e faça uma pequena entrada antes do 1."], ["ACÉFALO", "Acéfalo é um ritmo iniciado por um contratempo: o início do primeiro compasso é ocupado por pausa, escrita ou não escrita.", "O compasso já começou, mas o som só entra depois do início.", "Conte o 1 em silêncio e faça o som na parte seguinte."]]}, {"n": 14, "title": "Fase 14 — Notas pontuadas e subdivisão", "topics": [["14.1 — NOTAS PONTUADAS — DIFERENÇAS NA SUBDIVISÃO", "O MSA reforça que a métrica e a proporção entre as figuras devem ser respeitadas, especialmente em combinações como colcheia pontuada seguida de semicolcheia. A subdivisão correta evita alterar o valor das figuras.", "O ponto e a figura curta precisam ocupar exatamente o espaço escrito. Não transforme a combinação em outro ritmo.", "Divida o tempo em quatro partes iguais: a colcheia pontuada ocupa três partes e a semicolcheia ocupa uma."]]}, {"n": 15, "title": "Fase 15 — Andamento", "topics": [["15.1 — ANDAMENTO", "Andamento é a indicação de velocidade colocada no início da peça musical. Nos hinos, existem marcações mínima e máxima e recomenda-se que o andamento fique na média entre esses limites.", "Andamento é a velocidade da música. Mesmo mudando a velocidade, a proporção entre as figuras deve continuar correta.", "Use metrônomo dentro dos limites indicados e verifique se notas longas e curtas continuam proporcionais."], ["15.2 — MODIFICAÇÃO DE ANDAMENTO — poco rallentando", "Poco rallentando (poco rall.) indica uma pequena redução na velocidade, de modo gradativo.", "A música vai ficando um pouco mais lenta aos poucos, não de uma vez.", "Comece numa pulsação e reduza suavemente em vários passos."], ["15.3 — MODIFICAÇÃO INDEVIDA DE ANDAMENTO", "A modificação do andamento somente deve acontecer onde houver indicação. Não se deve realizar poco rallentando onde não exista essa marcação.", "Não fique mais lento só porque a frase está terminando. Mude a velocidade apenas quando a partitura mandar.", "Toque uma frase final mantendo a mesma pulsação até o fim quando não houver indicação de mudança."]]}, {"n": 16, "title": "Fase 16 — Frases e interpretação", "topics": [["16.1 — FRASES E SEMIFRASES", "Frase é uma unidade musical com sentido de conclusão. Nos hinos, normalmente é formada por 4 compassos, divididos geralmente em duas semifrases. Frasear é evidenciar, pelas acentuações e pela dinâmica, o início e o fim de cada frase.", "A frase é uma ideia musical completa; a semifrase é uma parte dessa ideia. Nem toda vírgula de respiração define uma semifrase.", "Ouça uma frase e pare na metade: se parecer que falta completar a ideia, você provavelmente parou numa semifrase."], ["16.2 — INTERPRETAÇÃO MUSICAL", "Interpretação musical é a arte de compreender as intenções e os sentimentos do compositor e transmiti-los por meio do som do instrumento. É a expressão musical. Nos hinos, a inspiração da poesia orienta a forma de execução.", "Não basta tocar as notas certas: é preciso compreender a mensagem e tocar de modo coerente com ela.", "Leia a poesia de um hino antes de tocar e pense se o caráter pede suavidade, firmeza, júbilo ou reverência."], ["16.3 — INDICAÇÕES INTERPRETATIVAS", "O MSA apresenta indicações interpretativas que orientam uma forma de expressão mais específica: Solene, Majestoso, Com júbilo, Com veneração, Com submissão e Com humildade.", "Essas palavras ajudam o músico a escolher a forma de expressão adequada.", "Escolha uma indicação e explique com suas palavras como ela deve influenciar a expressão musical."], ["SOLENE", "Forma de se apresentar perante uma autoridade reconhecendo sua grandeza, soando com grandiosidade, mas de maneira respeitosa.", "Pense em grandeza com respeito.", "Experimente tocar uma frase com firmeza e reverência."], ["MAJESTOSO", "Reconhecimento da grandeza de Deus e de Jesus Cristo, soando de modo imponente.", "Pense em firmeza e grandeza.", "Experimente tocar a mesma frase com um caráter amplo e nobre."], ["COM JÚBILO", "Forma de reconhecer a felicidade por sermos filhos de Deus e salvos por Jesus Cristo, soando com contentamento.", "Pense em alegria e contentamento.", "Experimente tocar a frase com brilho e alegria."], ["COM VENERAÇÃO", "Apresentação com reverência e adoração, com um som mais suave do que o solene.", "Pense em reverência e cuidado.", "Experimente tocar a frase com suavidade e respeito."], ["COM SUBMISSÃO", "Reconhecimento da nossa pequena estatura perante Deus e Jesus Cristo, tocando com esse pensamento, com suavidade e cuidado.", "Pense em respeito, atenção e suavidade.", "Experimente tocar a frase sem rigidez, com delicadeza."], ["COM HUMILDADE", "Clamor da alma reconhecendo erros e fraquezas, pedindo perdão e piedade, soando com leveza e podendo haver intensificação da dinâmica conforme o clamor.", "Pense em sinceridade, leveza e sensibilidade.", "Experimente tocar a frase com leveza e crescimento expressivo quando fizer sentido."]]}];
-const quizData = [[1, "Quais são os três elementos da música no MSA?", ["Melodia, Harmonia e Ritmo", "Som, Silêncio e Compasso", "Clave, Pauta e Nota"], 0], [2, "O que é pulsação?", ["Batidas constantes que servem de referência", "Uma nota muito forte", "Uma clave"], 0], [3, "No solfejo, o que fazemos?", ["Cantamos as notas na altura e no ritmo escritos", "Falamos apenas TA", "Falamos nomes sem cantar"], 0], [4, "O ponto de aumento acrescenta quanto?", ["Metade do valor da figura", "O dobro", "Um quarto"], 0], [5, "O que é uma tercina?", ["3 figuras no espaço em que normalmente caberiam 2", "2 figuras no espaço de 3", "Uma pausa longa"], 0], [6, "Quantos semitons formam um tom?", ["2", "3", "4"], 0], [7, "Para que serve a armadura de clave?", ["Indicar acidentes regulares da música", "Marcar o fim da música", "Indicar a dinâmica"], 0], [8, "O que é tonalidade?", ["Organização da música em relação à nota principal da escala", "A força do som", "A velocidade do hino"], 0], [9, "O que o ritornello indica?", ["Uma seção que deve ser repetida", "Um som mais forte", "Uma mudança de clave"], 0], [10, "Dinâmica está relacionada principalmente a quê?", ["Intensidade do som", "Nome das notas", "Número de compassos"], 0], [11, "No compasso composto, cada tempo pode ser dividido em quantos pulsos iguais?", ["3", "2", "4"], 0], [12, "No contratempo, o som acontece onde?", ["No tempo fraco ou parte fraca, com parte forte precedida por pausa", "Sempre no tempo forte", "Somente no fim do hino"], 0], [13, "Quais são os ritmos iniciais do MSA?", ["Tético, anacrúsico e acéfalo", "Forte, fraco e meio forte", "Maior, menor e justo"], 0], [14, "Numa colcheia pontuada seguida de semicolcheia, o que deve ser preservado?", ["A subdivisão e a proporção exatas", "Apenas o volume", "Somente a altura"], 0], [15, "O que significa poco rallentando?", ["Pequena redução gradativa da velocidade", "Parar imediatamente", "Aumentar a velocidade"], 0], [16, "O que orienta a interpretação dos hinos no MSA?", ["A inspiração da poesia e a expressão musical", "Somente a fórmula de compasso", "Somente o volume"], 0]];
-const qmap = Object.fromEntries(quizData.map(q => [q[0], q]));
-const grid = document.getElementById('phaseGrid');
-const content = document.getElementById('content');
+const PHASES = [{"n": 1, "title": "Fase 1 — Conhecendo a música", "topics": [["1.1 — MÚSICA E SOM", "MÚSICA é a arte de expressar sentimentos por meio de sons coordenados produzidos por voz ou instrumento musical. Som é tudo o que ouvimos.", "Música é uma conversa feita com sons. O som é a matéria-prima dessa conversa.", "Feche os olhos por 20 segundos e tente identificar 3 sons diferentes ao seu redor."], ["1.2 — ELEMENTOS DA MÚSICA", "Os elementos mais importantes da música são: MELODIA, HARMONIA e RITMO.", "Melodia é a sequência que conseguimos cantar; harmonia acontece quando sons diferentes soam juntos; ritmo organiza os sons no tempo.", "Bata palmas em um pulso constante e cante uma pequena sequência de notas."], ["1.3 — PROPRIEDADES DO SOM", "As principais propriedades do som são: TIMBRE, DURAÇÃO, ALTURA e INTENSIDADE.", "Timbre ajuda a reconhecer quem produz o som; duração mostra se ele é curto ou longo; altura indica grave ou agudo; intensidade indica fraco ou forte.", "Compare a mesma nota tocada por duas vozes ou instrumentos diferentes."], ["1.4 — NOTAS MUSICAIS", "As notas musicais representam os sons na escrita musical. No Brasil são: Dó, Ré, Mi, Fá, Sol, Lá e Si.", "São os nomes que usamos para organizar as alturas dos sons.", "Fale em ordem: Dó–Ré–Mi–Fá–Sol–Lá–Si e depois volte."], ["1.5 — PENTAGRAMA (PAUTA MUSICAL)", "Pentagrama ou pauta musical é o conjunto de 5 linhas e 4 espaços onde são escritas as notas musicais.", "É como uma escada musical: a posição da nota ajuda a mostrar sua altura.", "Desenhe 5 linhas paralelas e conte as linhas e espaços de baixo para cima."], ["1.6 — CLAVES", "Clave é um sinal que determina o nome da nota escrita em sua linha de referência. No MSA aparecem as claves de Sol, Dó e Fá.", "A clave funciona como uma placa de identificação: ela ajuda a descobrir o nome das notas no pentagrama.", "Procure no seu método qual clave é usada pelo seu instrumento."]]}, {"n": 2, "title": "Fase 2 — Figuras, compasso e pulsação", "topics": [["2.1 — FIGURAS MUSICAIS", "A duração do som e do silêncio é escrita com figuras musicais. Há figuras de som e figuras de silêncio (pausas), relacionadas pelo número de equivalência.", "Cada figura ocupa uma quantidade de tempo. As pausas ocupam o mesmo tempo, mas em silêncio.", "Escolha uma figura longa e divida seu valor em figuras menores."], ["2.2 — COMPASSO", "Compasso é a divisão de um trecho musical em séries regulares de tempos.", "É como separar a música em pequenas caixinhas de tempo.", "Marque uma pulsação constante e agrupe as batidas de 4 em 4."], ["2.3 — BARRAS DE COMPASSO SIMPLES, DUPLA E FINAL", "As barras de compasso organizam e separam trechos da música. O MSA apresenta barra simples, barra dupla e barra final.", "A barra simples separa compassos; a dupla marca divisões importantes; a final mostra que a peça terminou.", "Pegue um hino e procure os três tipos de barras."], ["2.4 — FÓRMULA DE COMPASSO EM 4", "A fórmula de compasso informa a quantidade de tempos e a figura que representa cada tempo. Nas fórmulas em 4 estudadas aqui, cada compasso possui quatro tempos.", "O número de cima ajuda a contar os tempos. O número de baixo mostra a figura de referência.", "Conte 1–2–3–4 repetidamente, sempre com a mesma distância entre as contagens."], ["2.5 — RITMO E PULSAÇÃO", "Ritmo é a distribuição dos sons no espaço de tempo. Pulsação são batidas constantes que servem de referência para organizar o ritmo.", "A pulsação é como um relógio. O ritmo acontece por cima desse relógio.", "Bata palmas iguais e fale “TA — TA TA — TA”."], ["2.6 — FORMA DE REALIZAÇÃO DOS EXERCÍCIOS RÍTMICOS", "O MSA orienta formas de marcar a pulsação e realizar os exercícios rítmicos com movimentos regulares.", "O importante é que o corpo ajude a manter o tempo, e não atrapalhe.", "Faça batidas iguais com a mão enquanto lê um exercício rítmico."]]}, {"n": 3, "title": "Fase 3 — Leitura e solfejo", "topics": [["3.1 — ENDECAGRAMA", "O endecagrama permite visualizar a relação das notas entre as claves em um sistema de 11 linhas.", "Ele ajuda a perceber que uma mesma nota pode aparecer escrita de formas diferentes conforme a clave.", "Escolha uma nota e observe onde ela aparece nas claves estudadas."], ["3.2 — LEITURA RÍTMICA, LEITURA MÉTRICA E SOLFEJO", "Leitura rítmica: falar a sílaba “TA”, executando com precisão o ritmo. Leitura métrica: falar os nomes das notas, sem cantar, executando o ritmo. Solfejo: cantar as notas musicais na altura e no padrão rítmico escritos na partitura.", "São três degraus: primeiro o ritmo; depois nome + ritmo; por fim nome + altura + ritmo.", "Pegue uma linha musical e faça as três etapas, uma de cada vez."], ["3.3 — MOVIMENTOS DE CONDUÇÃO PARA SOLFEJO", "Os movimentos de condução representam visualmente a pulsação determinada pela fórmula de compasso.", "A mão mostra onde cada tempo acontece.", "Treine o movimento sem cantar; depois acrescente o solfejo."], ["3.4 — MOVIMENTO DE SOLFEJO EM 4", "O movimento em 4 representa os quatro tempos do compasso, com pontos definidos para cada tempo.", "Imagine quatro lugares que a mão precisa visitar sempre no mesmo tempo.", "Conte 1–2–3–4 e faça o movimento mantendo todos os tempos iguais."], ["3.5 — METRÔNOMO", "Metrônomo é um equipamento que produz cliques sonoros em velocidade ajustável e ajuda a determinar e manter a velocidade da música ou dos exercícios rítmicos.", "É um relógio musical que não deixa a pulsação correr ou ficar para trás.", "Comece devagar e só aumente a velocidade quando conseguir manter regularidade."]]}, {"n": 4, "title": "Fase 4 — Ligaduras, ponto e intervalos", "topics": [["4.1 — LIGADURA", "Ligadura é uma linha curva colocada acima ou abaixo de duas ou mais notas. O MSA apresenta Ligadura de Valor e Ligadura de Portamento.", "Na ligadura de valor, sons da mesma altura são prolongados. Na de portamento, notas diferentes são executadas de forma ligada.", "Procure no hinário uma ligadura entre notas iguais e outra entre notas diferentes."], ["4.2 — PONTO DE AUMENTO", "Ponto de aumento é um ponto colocado à direita da cabeça da figura musical e aumenta metade da sua duração.", "Se uma figura vale 2, o ponto acrescenta mais 1. Ela passa a durar 3.", "Faça contas simples: valor da figura + metade do valor."], ["4.3 — INTERVALO", "Intervalo é a distância entre dois sons. Pode ser melódico, quando os sons são sucessivos, ou harmônico, quando soam simultaneamente.", "Intervalo mede o espaço musical entre uma nota e outra.", "Toque ou cante duas notas diferentes e perceba se elas aparecem uma depois da outra ou juntas."], ["4.4 — FÓRMULA DE COMPASSO EM 3", "A fórmula de compasso em 3 determina que o compasso terá três tempos.", "A contagem principal é 1–2–3.", "Conte três tempos e reinicie sempre no 1."], ["4.5 — MOVIMENTO DE SOLFEJO EM 3", "O movimento em 3 representa visualmente os três tempos do compasso.", "A mão percorre três pontos e volta ao começo.", "Faça o movimento dizendo 1–2–3 sem variar a velocidade."], ["4.6 — FÓRMULA DE COMPASSO EM 2", "A fórmula de compasso em 2 determina que o compasso terá dois tempos.", "A contagem principal é 1–2.", "Marque duas batidas iguais e repita."], ["4.7 — MOVIMENTO DE SOLFEJO EM 2", "O movimento em 2 representa visualmente os dois tempos do compasso.", "É um movimento simples de ida e volta entre os dois tempos.", "Conte 1–2 e confira se o segundo tempo não fica mais curto que o primeiro."]]}, {"n": 5, "title": "Fase 5 — Tercinas, fermata e compasso em 6", "topics": [["5.1 — TERCINAS", "Tercinas são grupos de 3 figuras colocadas no lugar em que normalmente cabem apenas 2 figuras do mesmo valor.", "Você precisa encaixar três sons iguais dentro do espaço que normalmente seria dividido em dois.", "Fale devagar “1-2-3” de maneira perfeitamente igual dentro de uma única pulsação maior."], ["5.2 — FERMATA", "Fermata é um sinal colocado acima ou abaixo de uma nota que indica o prolongamento do seu valor, seguido de uma parada breve em silêncio (com respiração). Também pode ser colocada sobre uma pausa, prolongando o seu valor.", "A nota espera um pouco mais, mas não é para perder o andamento da música.", "Sustente uma nota com controle e depois retome a pulsação corretamente."], ["5.3 — FÓRMULA DE COMPASSO EM 6", "As fórmulas de compasso em 6 estudadas no MSA organizam seis pulsos no compasso.", "Antes de aprender o agrupamento em compasso composto, você aprende a sentir e conduzir os seis pulsos.", "Conte 1–2–3–4–5–6 mantendo tudo igual."], ["5.4 — MOVIMENTO DE SOLFEJO EM 6", "O movimento em 6 representa os seis pulsos do compasso.", "Cada pulso recebe um ponto na condução.", "Treine só a mão primeiro e depois faça o solfejo."], ["5.5 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 6", "Em andamentos mais rápidos, o MSA apresenta um movimento alternativo para conduzir o compasso em 6 de forma agrupada.", "Quando a música fica rápida, a mão não precisa fazer seis movimentos grandes; os pulsos podem ser agrupados conforme o método.", "Compare a condução completa e a alternativa em velocidades diferentes."]]}, {"n": 6, "title": "Fase 6 — Tons, acidentes e escalas", "topics": [["6.1 — TOM E SEMITOM", "Semitom é o menor intervalo entre dois sons, na música ocidental. Tom é o intervalo formado por dois semitons.", "Dois meios passos formam um passo inteiro.", "No teclado, observe notas vizinhas para perceber semitons e compare com um tom."], ["6.2 — ACIDENTES — SUSTENIDO E BEMOL", "Acidentes são sinais que modificam a altura da nota. O sustenido eleva e o bemol abaixa a altura em um semitom.", "Sustenido sobe meio passo; bemol desce meio passo.", "Escolha uma nota natural e descubra sua versão com sustenido e com bemol."], ["6.3 — ESCALAS", "Escala é uma sequência organizada de notas em ordem de altura.", "É como subir ou descer uma escada usando notas.", "Cante uma escala subindo e depois descendo."], ["6.4 — ESCALAS DIATÔNICAS", "As escalas diatônicas organizam as notas segundo uma sequência própria de tons e semitons.", "Não é qualquer sequência: os tons e semitons aparecem em lugares determinados.", "Marque em uma escala onde estão os semitons."], ["6.5 — ESCALAS MAIORES", "Escalas maiores seguem a organização de tons e semitons apresentada pelo MSA para formar o modo maior.", "A posição dos semitons é o que ajuda a formar corretamente a escala maior.", "Compare Dó Maior com outra escala maior e observe que a estrutura é mantida."], ["6.6 — ESCALAS MAIORES COM SUSTENIDOS", "Algumas escalas maiores precisam de sustenidos para conservar a organização correta de tons e semitons.", "Os sustenidos ajustam certas notas para que a escala continue sendo maior.", "Observe uma escala com sustenidos e localize quais notas foram alteradas."], ["6.7 — ESCALAS MAIORES COM BEMÓIS", "Algumas escalas maiores precisam de bemóis para conservar a organização correta de tons e semitons.", "Os bemóis também ajustam a escala para manter sua estrutura maior.", "Observe uma escala com bemóis e localize quais notas foram alteradas."]]}, {"n": 7, "title": "Fase 7 — Armadura e compassos em 9 e 12", "topics": [["7.1 — ARMADURA DE CLAVE", "Armadura de clave é o conjunto de acidentes fixados entre a clave e a fórmula de compasso. Sua finalidade é indicar quais notas serão sempre alteradas por esses acidentes.", "Em vez de escrever o mesmo sustenido ou bemol toda hora, a armadura avisa isso logo no começo.", "Escolha uma armadura e diga quais nomes de notas serão alterados."], ["7.2 — FÓRMULA DE COMPASSO EM 9", "A fórmula de compasso em 9 organiza nove pulsos no compasso.", "Você aprende a perceber os nove pulsos antes de usar a condução agrupada.", "Conte 1 até 9 sem acelerar."], ["7.3 — MOVIMENTO DE SOLFEJO EM 9", "O movimento em 9 representa os nove pulsos da fórmula de compasso.", "A condução ajuda a localizar cada pulso.", "Treine o movimento sem notas e depois acrescente o solfejo."], ["7.4 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 9", "Em andamentos mais rápidos, o MSA apresenta uma forma alternativa de conduzir o compasso em 9 por agrupamento.", "A mão passa a mostrar grupos maiores em vez de nove movimentos separados.", "Compare o movimento completo com o alternativo."], ["7.5 — FÓRMULA DE COMPASSO EM 12", "A fórmula de compasso em 12 organiza doze pulsos no compasso.", "São doze pulsos que precisam permanecer proporcionais.", "Conte 1 até 12 mantendo a mesma pulsação."], ["7.6 — MOVIMENTO DE SOLFEJO EM 12", "O movimento em 12 representa os doze pulsos do compasso.", "Ele ajuda a visualizar onde cada pulso acontece.", "Treine devagar antes de acrescentar notas."], ["7.7 — MOVIMENTO ALTERNATIVO PARA SOLFEJO EM 12", "Em andamentos mais rápidos, o MSA apresenta uma condução alternativa para o compasso em 12.", "Os doze pulsos são percebidos dentro de grupos maiores.", "Use o metrônomo e compare a sensação da condução completa e da alternativa."]]}, {"n": 8, "title": "Fase 8 — Tonalidade e acidentes ocorrentes", "topics": [["8.1 — TONALIDADE", "Tonalidade é a organização da composição musical em relação à nota principal da escala (I — Tônica).", "A tonalidade mostra qual é o centro da música, a nota para a qual tudo parece querer voltar.", "Observe a armadura de clave e identifique qual escala maior corresponde a ela."], ["8.2 — ACIDENTES OCORRENTES E DE PRECAUÇÃO", "Acidentes ocorrentes são colocados à esquerda de uma nota e alteram essa nota e as demais de mesmo nome e mesma altura dentro daquele compasso. Acidentes de precaução são usados para evitar erro de leitura.", "É uma mudança que aparece durante a música, dentro do compasso. O bequadro cancela uma alteração.", "Marque num compasso até onde o efeito de um acidente ocorrente deve ser considerado."]]}, {"n": 9, "title": "Fase 9 — Repetição", "topics": [["9.1 — BARRA DE COMPASSO — REPETIÇÃO", "As barras de início e de final de repetição (ritornello) indicam o início e o final da seção que será repetida.", "Quando aparecem os sinais de repetição, você volta e toca novamente o trecho indicado. As casas 1 e 2 mostram finais diferentes para cada passagem.", "Desenhe uma sequência A–B–C com repetição e mostre em que ponto você voltaria."]]}, {"n": 10, "title": "Fase 10 — Dinâmica", "topics": [["10.1 — DINÂMICA", "Dinâmica é a variação da intensidade do som de maneira gradual, tanto para uma intensidade mais forte quanto para uma intensidade mais fraca.", "Dinâmica é controlar o volume musical com intenção, sem mudar o ritmo.", "Toque ou cante uma mesma frase começando suave e aumentando gradualmente; depois faça o contrário."]]}, {"n": 11, "title": "Fase 11 — Acento métrico e tipos de compasso", "topics": [["11.1 — ACENTO MÉTRICO", "Acento métrico é a acentuação forte ou fraca dos tempos do compasso. Ele varia de acordo com a fórmula de compasso e não deve ser literalmente executado aumentando ou diminuindo a intensidade do som.", "É uma sensação natural de apoio dentro do compasso. Você sente o tempo forte sem precisar bater mais forte nele.", "No 4/4, perceba: 1º tempo forte, 2º fraco, 3º meio forte e 4º fraco."], ["11.2 — COMPASSO SIMPLES", "Compasso simples é aquele em que a Unidade de Tempo é uma figura simples, que pode ser dividida em duas partes iguais (subdivisão binária).", "Cada tempo pode ser dividido em duas partes iguais.", "Pegue um tempo e diga 1-e para sentir duas partes iguais."], ["11.3 — COMPASSO COMPOSTO", "Compasso composto é aquele em que cada tempo pode ser dividido em três pulsos iguais (subdivisão ternária de cada tempo).", "Cada tempo grande guarda três pulsações menores dentro dele.", "Fale 1-la-li, 2-la-li mantendo os três pulsos iguais em cada tempo."], ["11.4 — COMPASSOS ALTERNADOS", "Compassos alternados são formados pela junção de duas ou mais fórmulas de compasso diferentes, aplicadas alternadamente a cada compasso.", "A regra de contagem muda de um compasso para o próximo e depois pode voltar.", "Imagine um compasso em 9 seguido por um em 6 e identifique cada fórmula antes de começar."]]}, {"n": 12, "title": "Fase 12 — Síncopa e contratempo", "topics": [["12.1 — SÍNCOPA", "A síncopa acontece quando um som é articulado no tempo fraco ou parte fraca de um tempo e se prolonga sobre o tempo forte ou parte forte seguinte.", "A nota começa numa parte fraca e continua passando pela parte forte, criando um deslocamento do acento métrico natural.", "Bata uma pulsação constante e sustente um som que começou entre duas batidas até atravessar a próxima."], ["12.2 — CONTRATEMPO", "O contratempo ocorre quando há notas executadas em tempo fraco ou parte fraca do tempo, ficando os tempos fortes ou partes fortes precedidos por pausas.", "Primeiro vem o silêncio na parte forte; depois o som entra na parte fraca.", "Marque duas partes: na primeira fique em silêncio, na segunda diga TA."]]}];
+const WORLDS = [{"n": 1, "name": "Vale dos Sons", "desc": "Descubra música, som, notas, pauta e claves.", "icon": "♪"}, {"n": 2, "name": "Cidade do Ritmo", "desc": "Domine figuras, compassos, barras e pulsação.", "icon": "♩"}, {"n": 3, "name": "Academia do Solfejo", "desc": "Treine leitura rítmica, métrica e solfejo.", "icon": "♫"}, {"n": 4, "name": "Ponte dos Intervalos", "desc": "Entenda ligaduras, pontos e distâncias sonoras.", "icon": "⌒"}, {"n": 5, "name": "Templo da Fermata", "desc": "Supere tercinas, fermata e compasso em 6.", "icon": "𝄐"}, {"n": 6, "name": "Montanha das Escalas", "desc": "Conquiste tons, semitons, acidentes e escalas.", "icon": "♯"}, {"n": 7, "name": "Castelo da Armadura", "desc": "Aprenda armadura e compassos em 9 e 12.", "icon": "♭"}, {"n": 8, "name": "Reino da Tonalidade", "desc": "Encontre a Tônica e os acidentes ocorrentes.", "icon": "T"}, {"n": 9, "name": "Portal da Repetição", "desc": "Use ritornellos e domine a repetição.", "icon": "↻"}, {"n": 10, "name": "Arena da Dinâmica", "desc": "Controle intensidade, crescendo e decrescendo.", "icon": "<"}, {"n": 11, "name": "Laboratório dos Compassos", "desc": "Domine acento métrico e tipos de compasso.", "icon": "𝄴"}, {"n": 12, "name": "Desafio Síncopa", "desc": "Enfrente síncopa e contratempo para concluir a jornada.", "icon": "★"}];
+const QUESTIONS = {"1": [{"q": "Quais são os três elementos mais importantes da música no MSA?", "a": "Melodia, Harmonia e Ritmo", "o": ["Altura, Timbre e Intensidade", "Clave, Pauta e Compasso", "Tom, Semitom e Escala"]}, {"q": "Qual propriedade do som permite perceber se um som é grave ou agudo?", "a": "Altura", "o": ["Timbre", "Duração", "Intensidade"]}, {"q": "Quantas linhas e espaços possui o pentagrama?", "a": "5 linhas e 4 espaços", "o": ["4 linhas e 5 espaços", "5 linhas e 5 espaços", "4 linhas e 4 espaços"]}], "2": [{"q": "O que é compasso?", "a": "A divisão de um trecho musical em séries regulares de tempos", "o": ["A distância entre dois sons", "A velocidade da música", "A intensidade de uma nota"]}, {"q": "Para que serve a pulsação?", "a": "Como referência constante para organizar o ritmo", "o": ["Para mudar a tonalidade", "Para definir a clave", "Para aumentar o volume"]}, {"q": "Qual barra indica o final da peça musical?", "a": "Barra final", "o": ["Barra simples", "Barra de repetição inicial", "Armadura de clave"]}], "3": [{"q": "Na leitura rítmica, qual sílaba é utilizada?", "a": "TA", "o": ["DÓ", "UM", "LÁ"]}, {"q": "Qual é a diferença principal do solfejo para a leitura métrica?", "a": "No solfejo as notas são cantadas na altura escrita", "o": ["No solfejo não existe ritmo", "Na leitura métrica canta-se a altura", "Não existe diferença"]}, {"q": "O que os movimentos de condução representam visualmente?", "a": "A pulsação determinada pela fórmula de compasso", "o": ["A tonalidade", "A intensidade", "O timbre"]}], "4": [{"q": "O ponto de aumento acrescenta quanto ao valor da figura?", "a": "Metade do valor da figura", "o": ["O dobro", "Um quarto", "Um tempo fixo"]}, {"q": "O que é intervalo?", "a": "A distância entre dois sons", "o": ["A velocidade entre duas notas", "A intensidade de um acorde", "Uma barra de compasso"]}, {"q": "Quando duas notas de mesma altura estão unidas por ligadura de valor, o que acontece?", "a": "Seus valores são somados e o som é prolongado", "o": ["As notas ficam mais fortes", "A segunda nota vira pausa", "A tonalidade muda"]}], "5": [{"q": "O que caracteriza uma tercina?", "a": "3 figuras no espaço em que normalmente cabem 2 do mesmo valor", "o": ["2 figuras no espaço de 3", "3 compassos iguais", "3 pausas consecutivas"]}, {"q": "O que a fermata indica?", "a": "Prolongamento do valor, seguido de breve parada em silêncio", "o": ["Aceleração imediata", "Mudança de clave", "Repetição obrigatória"]}, {"q": "Em andamento mais rápido, o compasso em 6 pode ser conduzido alternativamente em quantos tempos?", "a": "2 tempos", "o": ["3 tempos", "4 tempos", "6 tempos obrigatoriamente"]}], "6": [{"q": "Quantos semitons formam um tom?", "a": "2 semitons", "o": ["1 semitom", "3 semitons", "4 semitons"]}, {"q": "O sustenido faz o quê?", "a": "Eleva a altura da nota em um semitom", "o": ["Abaixa a nota em um semitom", "Duplica sua duração", "Anula o ritmo"]}, {"q": "O bemol faz o quê?", "a": "Abaixa a altura da nota em um semitom", "o": ["Eleva a nota em um semitom", "Aumenta a intensidade", "Transforma a nota em pausa"]}], "7": [{"q": "Onde fica a armadura de clave?", "a": "Entre a clave e a fórmula de compasso", "o": ["No fim de cada compasso", "Depois da barra final", "Somente sobre a última nota"]}, {"q": "Qual número superior identifica a fórmula de compasso em 9?", "a": "9", "o": ["3", "6", "12"]}, {"q": "Qual número superior identifica a fórmula de compasso em 12?", "a": "12", "o": ["4", "6", "9"]}], "8": [{"q": "A tonalidade se organiza em relação a qual nota principal da escala?", "a": "Tônica", "o": ["Dominante", "Sensível", "Subdominante"]}, {"q": "Onde é colocado o acidente ocorrente?", "a": "À esquerda da nota que será alterada", "o": ["À direita da barra final", "Sobre a clave", "No fim da pauta"]}, {"q": "Para que serve um acidente de precaução?", "a": "Para evitar erro de leitura", "o": ["Para mudar o andamento", "Para criar uma pausa", "Para indicar dinâmica"]}], "9": [{"q": "O que as barras de repetição delimitam?", "a": "A seção que será repetida", "o": ["A tonalidade da música", "A dinâmica do hino", "O valor da figura"]}, {"q": "Qual é outro nome usado para a barra de repetição?", "a": "Ritornello", "o": ["Portamento", "Pentagrama", "Metrônomo"]}, {"q": "Quando aparece uma repetição, o músico deve:", "a": "Retornar e executar novamente o trecho indicado", "o": ["Mudar a clave", "Aumentar a velocidade", "Ignorar o trecho anterior"]}], "10": [{"q": "Dinâmica está relacionada principalmente a quê?", "a": "À intensidade do som", "o": ["À tonalidade", "À fórmula de compasso", "À clave"]}, {"q": "Crescendo significa:", "a": "Aumento gradual da intensidade", "o": ["Redução gradual da velocidade", "Repetição de um trecho", "Abaixar uma nota"]}, {"q": "Decrescendo significa:", "a": "Diminuição gradual da intensidade", "o": ["Aumento da tonalidade", "Aceleração", "Mudança de clave"]}], "11": [{"q": "No compasso simples, a Unidade de Tempo pode ser dividida em:", "a": "Duas partes iguais", "o": ["Três partes iguais", "Quatro partes obrigatórias", "Cinco partes"]}, {"q": "No compasso composto, cada tempo pode ser dividido em:", "a": "Três pulsos iguais", "o": ["Dois pulsos iguais", "Quatro pulsos obrigatórios", "Um pulso apenas"]}, {"q": "Quais números superiores identificam os compassos compostos estudados no hinário?", "a": "6, 9 e 12", "o": ["2, 3 e 4", "3, 4 e 5", "4, 8 e 16"]}], "12": [{"q": "Na síncopa, o som começa onde?", "a": "No tempo fraco ou parte fraca e se prolonga sobre a parte forte", "o": ["Somente no tempo forte", "Sempre depois de uma pausa longa", "Somente no fim do compasso"]}, {"q": "No contratempo, o que aparece antes do som na parte fraca?", "a": "Uma pausa no tempo forte ou parte forte", "o": ["Uma fermata", "Uma armadura", "Um crescendo"]}, {"q": "Qual alternativa diferencia síncopa de contratempo?", "a": "Na síncopa o som se prolonga sobre a parte forte; no contratempo a parte forte fica em pausa", "o": ["São exatamente a mesma coisa", "Síncopa altera a tonalidade e contratempo altera a clave", "Contratempo só existe em compasso simples"]}]};
 
-function esc(s) {
-  return s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let currentPhase = 1;
+let quizState = {};
+
+function getProgress(){
+  try{
+    const p=JSON.parse(localStorage.getItem('msaKidsGame12')||'{"done":{},"activities":{},"records":{}}');
+    if(!p.done) p.done={};
+    if(!p.activities) p.activities={};
+    if(!p.records) p.records={};
+    return p;
+  }catch(e){return {done:{},activities:{},records:{}}}
+}
+function saveProgress(p){localStorage.setItem('msaKidsGame12',JSON.stringify(p))}
+function completedCount(p){return Object.keys(p.done||{}).length}
+function totalStars(p){return Object.values(p.done||{}).reduce((a,v)=>a+(v.stars||0),0)}
+function maxUnlocked(p){return Math.min(12,completedCount(p)+1)}
+
+function renderStats(){
+  const p=getProgress();
+  const done=completedCount(p), stars=totalStars(p);
+  document.getElementById('progressLabel').textContent=`${done} / 12 fases`;
+  document.getElementById('progressBar').style.width=(done/12*100)+'%';
+  document.getElementById('xpLabel').textContent=`${done*100 + stars*25} XP`;
+  document.getElementById('starsLabel').textContent=`${stars} ★`;
+  document.getElementById('levelLabel').textContent=done>=12?'Jornada concluída':`Fase ${maxUnlocked(p)}`;
+  [3,6,9,12].forEach(n=>document.getElementById('badge'+n).classList.toggle('unlocked',done>=n));
 }
 
-function colorsForPhase(n){
-  const palettes = [
-    ['#6c5ce7','#1f8ef1'],['#00b894','#00cec9'],['#e84393','#6c5ce7'],['#f39c4a','#ff6b6b'],
-    ['#1f8ef1','#00b894'],['#7d5fff','#f368e0'],['#00a878','#f7c948'],['#5f27cd','#54a0ff'],
-    ['#ff9f43','#ee5253'],['#10ac84','#2e86de'],['#6c5ce7','#ff7675'],['#00b894','#6c5ce7'],
-    ['#e17055','#fdcb6e'],['#6ab04c','#22a6b3'],['#3867d6','#e84393'],['#9c88ff','#fbc531']
-  ];
-  return palettes[(n-1)%palettes.length];
-}
-
-function bigIllustration(n){
-  const c = colorsForPhase(n);
-  return `
-  <svg class="phaseHeroArt" viewBox="0 0 300 120" aria-hidden="true">
-    <defs><linearGradient id="ph${n}" x1="0" x2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs>
-    <rect x="4" y="8" width="292" height="104" rx="20" fill="url(#ph${n})" opacity=".12"/>
-    <circle cx="42" cy="60" r="26" fill="url(#ph${n})"/>
-    <text x="42" y="68" text-anchor="middle" font-size="24" fill="#fff">♫</text>
-    <rect x="84" y="32" width="180" height="12" rx="6" fill="#d8d4ff"/>
-    <rect x="84" y="54" width="150" height="12" rx="6" fill="#d8d4ff"/>
-    <rect x="84" y="76" width="130" height="12" rx="6" fill="#d8d4ff"/>
-    <circle cx="252" cy="76" r="16" fill="url(#ph${n})"/>
-    <text x="252" y="82" text-anchor="middle" font-size="14" fill="#fff">F${n}</text>
-  </svg>`;
-}
-
-function visualSVG(title){
-  const t = title.toUpperCase();
-  const svgs = {
-    notes:`<svg viewBox="0 0 120 88"><rect x="10" y="18" width="100" height="52" rx="14" fill="#f2eeff"/><path d="M20 30h80M20 40h80M20 50h80M20 60h80" stroke="#b9b0ff" stroke-width="3"/><circle cx="42" cy="50" r="8" fill="#6c5ce7"/><rect x="48" y="24" width="4" height="26" rx="2" fill="#6c5ce7"/><circle cx="74" cy="40" r="8" fill="#1f8ef1"/><rect x="80" y="18" width="4" height="22" rx="2" fill="#1f8ef1"/></svg>`,
-    rhythm:`<svg viewBox="0 0 120 88"><circle cx="22" cy="44" r="13" fill="#ffcd57"/><circle cx="60" cy="44" r="13" fill="#ffcd57"/><circle cx="98" cy="44" r="13" fill="#ffcd57"/><path d="M22 21v46M60 21v46M98 21v46" stroke="#f39c4a" stroke-width="4"/><path d="M22 20h38M60 20h38" stroke="#f39c4a" stroke-width="4" stroke-linecap="round"/></svg>`,
-    staff:`<svg viewBox="0 0 120 88"><path d="M14 24h92M14 34h92M14 44h92M14 54h92M14 64h92" stroke="#aab9c5" stroke-width="3"/><text x="20" y="53" font-size="32" fill="#6c5ce7">𝄞</text><circle cx="78" cy="44" r="8" fill="#00b894"/><rect x="84" y="18" width="4" height="26" rx="2" fill="#00b894"/></svg>`,
-    hand:`<svg viewBox="0 0 120 88"><path d="M28 72c8-18 8-33 8-48 0-4 5-4 5 0v22-22c0-4 5-4 5 0v22-25c0-4 5-4 5 0v25-20c0-4 5-4 5 0v20-15c0-4 5-4 5 0v18c0 9 8 12 8 24" fill="#ffd7b2" stroke="#e0a67a" stroke-width="3"/><circle cx="83" cy="16" r="7" fill="#6c5ce7"/><circle cx="100" cy="30" r="7" fill="#1f8ef1"/><circle cx="95" cy="54" r="7" fill="#00b894"/></svg>`,
-    metronome:`<svg viewBox="0 0 120 88"><path d="M60 12 92 76H28Z" fill="#ffe6a9" stroke="#f39c4a" stroke-width="3"/><path d="M60 24v34" stroke="#7a5a00" stroke-width="4"/><path d="M60 30 73 56" stroke="#6c5ce7" stroke-width="4"/><circle cx="74" cy="58" r="5" fill="#6c5ce7"/></svg>`,
-    wave:`<svg viewBox="0 0 120 88"><path d="M12 48c10 0 10-20 20-20s10 40 20 40 10-40 20-40 10 20 20 20 10-10 16-10" fill="none" stroke="#1f8ef1" stroke-width="5" stroke-linecap="round"/><path d="M12 60c8 0 8-10 16-10s8 20 16 20 8-20 16-20 8 10 16 10 8-6 16-6" fill="none" stroke="#00b894" stroke-width="4" stroke-linecap="round"/></svg>`,
-    scale:`<svg viewBox="0 0 120 88"><path d="M16 72h86" stroke="#c1c7d0" stroke-width="4"/><path d="M24 72v-10h12v10M40 62v-10h12v20M56 52v-10h12v30M72 42v-10h12v40M88 32v-10h12v50" fill="#6c5ce7"/></svg>`,
-    bars:`<svg viewBox="0 0 120 88"><rect x="18" y="24" width="24" height="40" rx="6" fill="#cfe9ff"/><rect x="48" y="24" width="6" height="40" fill="#6c5ce7"/><rect x="66" y="24" width="6" height="40" fill="#1f8ef1"/><rect x="82" y="24" width="10" height="40" fill="#ff6b6b"/><rect x="96" y="24" width="4" height="40" fill="#ff6b6b"/></svg>`,
-    dynamic:`<svg viewBox="0 0 120 88"><text x="14" y="54" font-size="28" fill="#1f8ef1">p</text><path d="M38 46h20" stroke="#c9c9c9" stroke-width="4"/><text x="62" y="54" font-size="26" fill="#00b894">mf</text><path d="M92 46h16" stroke="#c9c9c9" stroke-width="4"/><text x="96" y="54" font-size="28" fill="#ff6b6b">f</text></svg>`,
-    repeat:`<svg viewBox="0 0 120 88"><path d="M30 20v48M42 20v48" stroke="#6c5ce7" stroke-width="4"/><path d="M88 20v48M78 20v48" stroke="#ff6b6b" stroke-width="4"/><circle cx="50" cy="34" r="4" fill="#ff6b6b"/><circle cx="50" cy="54" r="4" fill="#ff6b6b"/><circle cx="70" cy="34" r="4" fill="#6c5ce7"/><circle cx="70" cy="54" r="4" fill="#6c5ce7"/><path d="M58 24c10 4 12 10 12 20 0 8-3 14-12 20" fill="none" stroke="#00b894" stroke-width="4"/></svg>`,
-    tone:`<svg viewBox="0 0 120 88"><rect x="18" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="32" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="46" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="60" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="74" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="88" y="24" width="14" height="42" rx="3" fill="#fff" stroke="#444"/><rect x="28" y="24" width="10" height="24" rx="2" fill="#111"/><rect x="56" y="24" width="10" height="24" rx="2" fill="#111"/><rect x="70" y="24" width="10" height="24" rx="2" fill="#111"/></svg>`,
-    phrase:`<svg viewBox="0 0 120 88"><path d="M10 52c12 0 12-18 24-18s12 18 24 18 12-18 24-18 12 18 24 18" fill="none" stroke="#6c5ce7" stroke-width="5" stroke-linecap="round"/><path d="M18 68c10-8 22-12 36-12M66 68c10-8 22-12 36-12" stroke="#ff9f43" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`,
-    default:`<svg viewBox="0 0 120 88"><circle cx="28" cy="44" r="18" fill="#6c5ce7"/><circle cx="60" cy="44" r="18" fill="#1f8ef1"/><circle cx="92" cy="44" r="18" fill="#00b894"/><text x="28" y="49" text-anchor="middle" font-size="16" fill="#fff">MSA</text><text x="60" y="49" text-anchor="middle" font-size="16" fill="#fff">♪</text><text x="92" y="49" text-anchor="middle" font-size="16" fill="#fff">♫</text></svg>`
-  };
-  if(t.includes('MÚSICA')||t.includes('NOTAS MUSICAIS')||t.includes('CLAVES')) return svgs.notes;
-  if(t.includes('PENTAGRAMA')||t.includes('ENDECAGRAMA')) return svgs.staff;
-  if(t.includes('RITMO')||t.includes('FIGURAS')||t.includes('TERCINAS')||t.includes('PONTO DE AUMENTO')||t.includes('SUBDIVISÃO')) return svgs.rhythm;
-  if(t.includes('MOVIMENTO')||t.includes('CONDUÇÃO')) return svgs.hand;
-  if(t.includes('METRÔNOMO')||t.includes('ANDAMENTO')) return svgs.metronome;
-  if(t.includes('PROPRIEDADES DO SOM')||t.includes('DINÂMICA')) return svgs.wave;
-  if(t.includes('ESCALAS')||t.includes('TONALIDADE')||t.includes('ARMADURA')) return svgs.scale;
-  if(t.includes('COMPASSO')||t.includes('BARRA')) return svgs.bars;
-  if(t.includes('ACIDENTES')||t.includes('TOM E SEMITOM')) return svgs.tone;
-  if(t.includes('REPETIÇÃO')||t.includes('RITORNELLO')) return svgs.repeat;
-  if(t.includes('FRASES')||t.includes('INTERPRETAÇÃO')||t.includes('INDICAÇÕES')) return svgs.phrase;
-  return svgs.default;
-}
-
-function visualHint(title){
-  const t = title.toUpperCase();
-  if(t.includes('RITMO')) return 'Veja os sons organizados em batidas iguais.';
-  if(t.includes('PENTAGRAMA') || t.includes('CLAVES')) return 'Observe como a posição no desenho ajuda a entender a escrita musical.';
-  if(t.includes('ESCALA') || t.includes('TONALIDADE')) return 'Imagine uma escada: cada degrau é uma nota.';
-  if(t.includes('DINÂMICA')) return 'Pense no som ficando mais forte ou mais fraco, sem mudar a velocidade.';
-  if(t.includes('ANDAMENTO') || t.includes('METRÔNOMO')) return 'A imagem lembra constância, regularidade e velocidade controlada.';
-  if(t.includes('FRASES') || t.includes('INTERPRETAÇÃO')) return 'A linha mostra que a música também respira e se expressa.';
-  return 'Use a imagem como uma pista visual para lembrar o conceito.';
-}
-
-function render(){
-  grid.innerHTML = '';
-  content.innerHTML = '';
-  phases.forEach(p => {
-    const b = document.createElement('button');
-    b.className='phasebtn'; b.id='pbtn-'+p.n;
-    b.innerHTML = `<b>Fase ${p.n}</b><span>${esc(p.title.replace(/^Fase \d+ — /,''))}</span>`;
-    b.onclick = () => document.getElementById('fase-'+p.n).scrollIntoView({behavior:'smooth'});
-    grid.appendChild(b);
-
-    const sec = document.createElement('section');
-    sec.className='phase'; sec.id='fase-'+p.n;
-    const topicHTML = p.topics.map(t => `
-      <article class="topic searchable">
-        <h3>${esc(t[0])}</h3>
-        <div class="visual">
-          <div>${visualSVG(t[0])}</div>
-          <div class="visualText"><strong>Imagem-guia:</strong> ${esc(visualHint(t[0]))}</div>
-        </div>
-        <div class="block msa"><b>No MSA</b>${esc(t[1])}</div>
-        <div class="block easy"><b>Jeito fácil de entender</b>${esc(t[2])}</div>
-        <div class="block play"><b>Vamos experimentar</b>${esc(t[3])}</div>
-      </article>
-    `).join('');
-    const q = qmap[p.n];
-    const answers = q[2].map((a,i)=>`<button onclick="answer(${p.n},${i})">${esc(a)}</button>`).join('');
-    sec.innerHTML = `
-      <div class="phaseCard searchable">
-        <div class="phasehead">
-          <div class="badgeN">${p.n}</div>
-          <div class="phaseTitle">
-            <small>MISSÃO ${p.n} DE 16</small>
-            <h2>${esc(p.title)}</h2>
-          </div>
-          ${bigIllustration(p.n)}
-        </div>
-        <div class="topicgrid">${topicHTML}</div>
-        <div class="quiz">
-          <h3>🎲 Desafio rápido</h3>
-          <div>${esc(q[1])}</div>
-          <div class="answers">${answers}</div>
-          <div class="feedback" id="fb-${p.n}"></div>
-        </div>
-        <div class="finish">
-          <span style="color:var(--muted)">Terminou de estudar esta fase?</span>
-          <button id="done-${p.n}" onclick="toggleDone(${p.n})">Marcar como concluída ✓</button>
-        </div>
-      </div>`;
-    content.appendChild(sec);
+function renderMap(){
+  const p=getProgress(), unlocked=maxUnlocked(p);
+  const map=document.getElementById('map');
+  map.innerHTML='';
+  WORLDS.forEach(w=>{
+    const done=!!p.done[w.n];
+    const locked=w.n>unlocked;
+    const b=document.createElement('button');
+    b.className='level'+(done?' done':'')+(currentPhase===w.n?' active':'');
+    b.disabled=locked;
+    const stars=done?p.done[w.n].stars:0;
+    b.innerHTML=`
+      <div class="levelTop"><div class="levelIcon">${done?'✓':w.icon}</div><div class="lock">${locked?'🔒':done?'':'→'}</div></div>
+      <small>FASE ${w.n}</small>
+      <h3>${w.name}</h3>
+      <p>${w.desc}</p>
+      <div class="levelStars">${done?'★'.repeat(stars)+'☆'.repeat(3-stars):locked?'Bloqueada':'Disponível'}</div>`;
+    b.onclick=()=>openPhase(w.n);
+    map.appendChild(b);
   });
-  updateProgress();
 }
 
-function answer(n, i){
-  const q = qmap[n];
-  const fb = document.getElementById('fb-'+n);
-  if(i === q[3]) {
-    fb.textContent = '✅ Muito bem! Resposta correta.';
-    fb.style.color = '#087c59';
-  } else {
-    fb.textContent = '🔁 Quase! Revise o cartão acima e tente de novo.';
-    fb.style.color = '#b35c00';
-  }
+function openPhase(n){
+  currentPhase=n;
+  quizState={answers:{},checked:{}};
+  renderMap();
+  renderMission();
+  document.getElementById('mission').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-function getDone(){ try{ return JSON.parse(localStorage.getItem('msaKidsVisualDone')||'[]') } catch(e){ return [] } }
-function saveDone(a){ localStorage.setItem('msaKidsVisualDone', JSON.stringify(a)) }
-function toggleDone(n){
-  let a = getDone();
-  a = a.includes(n) ? a.filter(x => x !== n) : [...a, n];
-  saveDone(a); updateProgress();
-}
-function resetProgress(){
-  if(confirm('Deseja apagar o progresso das 16 fases?')){ saveDone([]); updateProgress(); }
-}
-function updateProgress(){
-  const a = getDone();
-  const total = a.length;
-  document.getElementById('progress').style.width = (total/16*100)+'%';
-  document.getElementById('progressText').textContent = `${total} de 16 fases concluídas.`;
-  document.getElementById('stars').textContent = '★'.repeat(total)+'☆'.repeat(16-total);
-  for(let n=1;n<=16;n++) {
-    const done = a.includes(n);
-    const db = document.getElementById('done-'+n);
-    const pb = document.getElementById('pbtn-'+n);
-    if(db) {
-      db.textContent = done ? 'Concluída ★' : 'Marcar como concluída ✓';
-      db.classList.toggle('done', done);
-    }
-    if(pb) pb.classList.toggle('done', done);
-  }
+function renderMission(){
+  const phase=PHASES.find(x=>x.n===currentPhase);
+  const world=WORLDS.find(x=>x.n===currentPhase);
+  document.getElementById('missionNum').textContent=currentPhase;
+  document.getElementById('missionTitle').textContent=`Fase ${currentPhase} — ${world.name}`;
+  document.getElementById('missionDesc').textContent=world.desc;
+
+  const cards=phase.topics.map(t=>`
+    <article class="topic">
+      <h3>${t[0]}</h3>
+      <div class="block msa"><b>No MSA</b>${t[1]}</div>
+      <div class="block easy"><b>Jeito fácil de entender</b>${t[2]}</div>
+    </article>`).join('');
+  document.getElementById('studyPane').innerHTML=`<div class="topicCards">${cards}</div>`;
+
+  renderActivities();
+  renderChallenge();
+  updateFlow();
 }
 
-document.getElementById('reviewBtn').onclick = () => {
-  document.body.classList.toggle('reviewOnly');
-  document.getElementById('reviewBtn').textContent = document.body.classList.contains('reviewOnly')
-    ? 'Mostrar exemplos e imagens completas'
-    : 'Modo revisão rápida';
+
+const RECORD_FIELDS = {
+  "1-0": {label:"Sons que você identificou", placeholder:"Ex.: campainha, voz, carro", kind:"textarea", help:"Registre pelo menos os sons que você percebeu."},
+  "1-1": {label:"Sequência ou ritmo que você fez", placeholder:"Ex.: Dó–Ré–Mi / palmas 1–2–3–4", kind:"input"},
+  "1-2": {label:"Fontes sonoras comparadas", placeholder:"Ex.: minha voz e violino", kind:"input"},
+  "1-3": {label:"Sequência das notas", placeholder:"Digite: Dó, Ré, Mi, Fá, Sol, Lá, Si", kind:"input"},
+  "1-4": {label:"O que você encontrou no pentagrama", placeholder:"Ex.: 5 linhas e 4 espaços", kind:"input"},
+  "1-5": {label:"Clave usada pelo seu instrumento", placeholder:"Ex.: Clave de Sol", kind:"input", help:"Digite a clave que você encontrou no método do seu instrumento."},
+
+  "2-0": {label:"Equivalência que você montou", placeholder:"Ex.: 1 mínima = 2 semínimas", kind:"input"},
+  "2-2": {label:"Barras que você encontrou", placeholder:"Ex.: simples, dupla e final", kind:"input"},
+  "2-4": {label:"Ritmo que você executou", placeholder:"Ex.: TA — TA TA — TA", kind:"input"},
+
+  "3-0": {label:"Nota observada no endecagrama", placeholder:"Ex.: Dó", kind:"input"},
+  "3-4": {label:"Velocidade usada no metrônomo", placeholder:"Ex.: 60 BPM", kind:"input"},
+
+  "4-0": {label:"Exemplo de ligadura encontrado", placeholder:"Ex.: ligadura de valor entre duas notas iguais", kind:"textarea"},
+  "4-2": {label:"Exemplo de intervalo", placeholder:"Ex.: Dó–Mi", kind:"input"},
+
+  "5-0": {label:"Tercina praticada", placeholder:"Ex.: três colcheias em tercina", kind:"input"},
+  "5-1": {label:"Onde você encontrou a fermata", placeholder:"Ex.: hino ___ / compasso ___", kind:"input"},
+
+  "6-0": {label:"Exemplo de tom ou semitom", placeholder:"Ex.: Mi–Fá = semitom", kind:"input"},
+  "6-1": {label:"Acidente praticado", placeholder:"Ex.: Fá♯ / Si♭", kind:"input"},
+  "6-4": {label:"Escala maior praticada", placeholder:"Ex.: Dó Maior", kind:"input"},
+
+  "7-0": {label:"Armadura observada", placeholder:"Ex.: 2 sustenidos / 3 bemóis", kind:"input"},
+  "7-1": {label:"Contagem do compasso em 9", placeholder:"Registre como você contou", kind:"input"},
+  "7-4": {label:"Contagem do compasso em 12", placeholder:"Registre como você contou", kind:"input"},
+
+  "8-0": {label:"Tonalidade identificada", placeholder:"Ex.: Sol Maior", kind:"input"},
+  "8-1": {label:"Acidente encontrado", placeholder:"Ex.: Dó♯ ocorrente", kind:"input"},
+
+  "9-0": {label:"Trecho com repetição", placeholder:"Ex.: hino ___, compassos ___ a ___", kind:"input"},
+
+  "10-0": {label:"Indicação de dinâmica encontrada", placeholder:"Ex.: p, f, crescendo, decrescendo", kind:"input"},
+
+  "11-0": {label:"Padrão de acento métrico", placeholder:"Ex.: Forte – fraco – meio Forte – fraco", kind:"input"},
+  "11-1": {label:"Exemplo de compasso simples", placeholder:"Ex.: 4/4", kind:"input"},
+  "11-2": {label:"Exemplo de compasso composto", placeholder:"Ex.: 6/8", kind:"input"},
+  "11-3": {label:"Exemplo de compassos alternados", placeholder:"Ex.: 3/4 + 2/4", kind:"input"},
+
+  "12-0": {label:"Exemplo de síncopa observado", placeholder:"Descreva onde o som começa e se prolonga", kind:"textarea"},
+  "12-1": {label:"Exemplo de contratempo observado", placeholder:"Descreva onde aparece a pausa e onde entra o som", kind:"textarea"}
 };
 
-document.getElementById('search').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase().trim();
-  phases.forEach(p => {
-    const sec = document.getElementById('fase-'+p.n);
-    const btn = document.getElementById('pbtn-'+p.n);
-    if(!q) {
-      sec.classList.remove('hidden');
-      btn.classList.remove('hidden');
-      return;
-    }
-    const hit = sec.innerText.toLowerCase().includes(q);
-    sec.classList.toggle('hidden', !hit);
-    btn.classList.toggle('hidden', !hit);
-  });
-});
+function getRecordConfig(index){
+  return RECORD_FIELDS[`${currentPhase}-${index}`] || null;
+}
+function getActivityRecord(index){
+  const p=getProgress();
+  return (p.records[currentPhase] && p.records[currentPhase][index]) || "";
+}
+function escAttr(v){
+  return String(v??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function recordRequirementMet(index){
+  const cfg=getRecordConfig(index);
+  if(!cfg) return true;
+  return getActivityRecord(index).trim().length>0;
+}
 
-render();
+function getActivityState(){
+  const p=getProgress();
+  return p.activities[currentPhase] || {};
+}
+function activitiesComplete(){
+  const phase=PHASES.find(x=>x.n===currentPhase);
+  const state=getActivityState();
+  return phase.topics.every((_,i)=>state[i]===true && recordRequirementMet(i));
+}
+function renderActivities(){
+  const phase=PHASES.find(x=>x.n===currentPhase);
+  const state=getActivityState();
+  const doneCount=phase.topics.filter((_,i)=>state[i]===true && recordRequirementMet(i)).length;
+  const total=phase.topics.length;
+
+  const cards=phase.topics.map((t,i)=>{
+    const cfg=getRecordConfig(i);
+    const record=getActivityRecord(i);
+    const recordOk=recordRequirementMet(i);
+    const done=state[i]===true && recordOk;
+
+    let recordHtml="";
+    if(cfg){
+      const fieldId=`record-${currentPhase}-${i}`;
+      const common=`id="${fieldId}" placeholder="${escAttr(cfg.placeholder||'')}" oninput="saveActivityRecord(${i},this.value)"`;
+      const field=cfg.kind==="textarea"
+        ? `<textarea ${common}>${escAttr(record)}</textarea>`
+        : `<input type="text" value="${escAttr(record)}" ${common}>`;
+      recordHtml=`
+        <div class="activityRecord">
+          <label for="${fieldId}">✍️ Registro da atividade</label>
+          ${field}
+          <small id="record-help-${i}" class="${recordOk?'recordSaved':''}">
+            ${recordOk?'✓ Registro salvo':(cfg.help||'Preencha este campo para poder concluir a atividade.')}
+          </small>
+        </div>`;
+    }
+
+    return `<article class="activityCard ${done?'done':''}">
+      <h4>${t[0]}</h4>
+      <div class="activityText"><strong>Atividade:</strong> ${t[3]}</div>
+      ${recordHtml}
+      <label class="activityCheck">
+        <input id="actcheck-${i}" type="checkbox" ${done?'checked':''} ${recordOk?'':'disabled'} onchange="toggleActivity(${i},this.checked)">
+        <span>${cfg?'Registrei e concluí esta atividade na prática':'Concluí esta atividade na prática'}</span>
+      </label>
+    </article>`;
+  }).join('');
+
+  document.getElementById('activityPane').innerHTML=`
+    <div class="activitiesGrid">${cards}</div>
+    <div class="activitySummary">
+      <div><strong>${doneCount} de ${total} atividades concluídas</strong><br><span style="font-size:11px;color:var(--muted)">Nas atividades com campo de registro, preencha a resposta antes de marcar como concluída.</span></div>
+      <button class="bigChallengeBtn" onclick="goToChallenge()" ${doneCount===total?'':'disabled'}>
+        ${doneCount===total?'🎯 IR PARA O DESAFIO':'🔒 COMPLETE AS ATIVIDADES'}
+      </button>
+    </div>`;
+}
+
+function saveActivityRecord(index,value){
+  const p=getProgress();
+  if(!p.records[currentPhase]) p.records[currentPhase]={};
+  p.records[currentPhase][index]=value;
+
+  const valid=String(value).trim().length>0;
+  if(!valid && p.activities[currentPhase] && p.activities[currentPhase][index]){
+    p.activities[currentPhase][index]=false;
+  }
+  saveProgress(p);
+
+  const check=document.getElementById(`actcheck-${index}`);
+  if(check){
+    check.disabled=!valid;
+    if(!valid) check.checked=false;
+  }
+  const help=document.getElementById(`record-help-${index}`);
+  if(help){
+    const cfg=getRecordConfig(index);
+    help.textContent=valid?'✓ Registro salvo':(cfg?.help||'Preencha este campo para poder concluir a atividade.');
+    help.classList.toggle('recordSaved',valid);
+  }
+  if(!valid){
+    renderChallenge();
+    updateFlow();
+  }
+}
+
+function toggleActivity(index,checked){
+  const p=getProgress();
+  if(!p.activities[currentPhase]) p.activities[currentPhase]={};
+  p.activities[currentPhase][index]=checked;
+  saveProgress(p);
+  renderActivities();
+  renderChallenge();
+  updateFlow();
+}
+function goToChallenge(){
+  if(!activitiesComplete()) return;
+  document.getElementById('challengeSection').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function updateFlow(){
+  const p=getProgress();
+  const phaseDone=!!p.done[currentPhase];
+  const activityDone=activitiesComplete();
+  const qDone=Object.keys(quizState.checked||{}).length===3;
+
+  const s=document.getElementById('flowStudy');
+  const a=document.getElementById('flowActivity');
+  const c=document.getElementById('flowChallenge');
+  [s,a,c].forEach(x=>x.classList.remove('active','done'));
+
+  s.classList.add('done');
+  if(!activityDone){
+    a.classList.add('active');
+  }else{
+    a.classList.add('done');
+    c.classList.add(phaseDone?'done':'active');
+  }
+  if(phaseDone) c.classList.add('done');
+}
+
+
+function shuffle(a){
+  const x=[...a];
+  for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}
+  return x;
+}
+
+function getPreparedQuestions(){
+  if(!quizState.prepared){
+    quizState.prepared=QUESTIONS[currentPhase].map((q,idx)=>{
+      const opts=shuffle([q.a,...q.o]);
+      return {...q,idx,opts,correct:opts.indexOf(q.a)};
+    });
+  }
+  return quizState.prepared;
+}
+
+function renderChallenge(){
+  const pane=document.getElementById('challengePane');
+
+  if(!activitiesComplete()){
+    const phase=PHASES.find(x=>x.n===currentPhase);
+    const state=getActivityState();
+    const doneCount=phase.topics.filter((_,i)=>state[i]===true && recordRequirementMet(i)).length;
+    pane.innerHTML=`
+      <div class="challengeGate">
+        <div class="gateIcon">🔒</div>
+        <h3>Desafio ainda bloqueado</h3>
+        <p>Antes de responder às perguntas, execute as atividades da Etapa 2. Você concluiu <strong>${doneCount} de ${phase.topics.length}</strong> atividades.</p>
+        <button class="btn secondary" style="margin-top:12px" onclick="document.getElementById('activityPane').scrollIntoView({behavior:'smooth'})">↑ Voltar às atividades</button>
+      </div>`;
+    return;
+  }
+
+  const qs=getPreparedQuestions();
+  const p=getProgress();
+  const prior=p.done[currentPhase];
+  const cards=qs.map((q,qi)=>{
+    const sel=quizState.answers[qi];
+    const checked=quizState.checked[qi];
+    return `<article class="challengeCard">
+      <h3>${qi+1}. ${q.q}</h3>
+      <div class="opts">
+        ${q.opts.map((o,oi)=>{
+          let cls='opt';
+          if(sel===oi) cls+=' selected';
+          if(checked && oi===q.correct) cls+=' correct';
+          if(checked && sel===oi && oi!==q.correct) cls+=' wrong';
+          return `<button class="${cls}" onclick="choose(${qi},${oi})" ${checked?'disabled':''}>${String.fromCharCode(65+oi)}. ${o}</button>`;
+        }).join('')}
+      </div>
+      <div class="feedback">${checked ? (sel===q.correct?'✅ Correto!':'❌ Revise o conteúdo. Resposta correta: '+q.a) : ''}</div>
+    </article>`;
+  }).join('');
+
+  const allAnswered=qs.every((_,i)=>quizState.answers[i]!==undefined);
+  const allChecked=qs.every((_,i)=>quizState.checked[i]);
+  let correct=0;
+  if(allChecked) qs.forEach((q,i)=>{if(quizState.answers[i]===q.correct)correct++;});
+  const stars=allChecked?correct:0;
+
+  pane.innerHTML=`
+    <div class="challengeReady">
+      <b>🎯 Atividades concluídas — desafio liberado!</b>
+      <span>Agora responda às 3 perguntas. Esta etapa conclui a missão e libera a próxima fase.</span>
+    </div>
+    ${cards}
+    <div class="challengeFooter">
+      <div class="starsBig">${allChecked?'★'.repeat(stars)+'☆'.repeat(3-stars):'☆☆☆'}</div>
+      <div>
+        ${!allChecked
+          ? `<button class="btn primary" onclick="checkQuiz()" ${allAnswered?'':'disabled'}>${allAnswered?'Conferir respostas':'Responda às 3 perguntas'}</button>`
+          : `<button class="btn green" onclick="completePhase()">${prior?'Atualizar pontuação':'CONCLUIR MISSÃO E LIBERAR PRÓXIMA FASE'} ✓</button>`}
+      </div>
+    </div>`;
+}
+
+
+function choose(qi,oi){
+  if(quizState.checked[qi]) return;
+  quizState.answers[qi]=oi;
+  renderChallenge();
+}
+function checkQuiz(){
+  const qs=getPreparedQuestions();
+  qs.forEach((_,i)=>quizState.checked[i]=true);
+  renderChallenge();
+  updateFlow();
+}
+function completePhase(){
+  const qs=getPreparedQuestions();
+  let correct=0;
+  qs.forEach((q,i)=>{if(quizState.answers[i]===q.correct)correct++;});
+  const stars=correct;
+  const p=getProgress();
+  const old=p.done[currentPhase]?.stars||0;
+  p.done[currentPhase]={stars:Math.max(old,stars)};
+  saveProgress(p);
+  renderStats();renderMap();updateFlow();
+
+  const next=currentPhase<12?currentPhase+1:null;
+  document.getElementById('challengePane').innerHTML=`
+    <div class="win">
+      <div class="confetti">✦ ★ ✦ ★ ✦</div>
+      <div class="trophy">${currentPhase===12?'🏆':'🎵'}</div>
+      <h2>${currentPhase===12?'Jornada concluída!':'Fase concluída!'}</h2>
+      <p>Você conquistou <strong>${stars} de 3 estrelas</strong> nesta tentativa e ganhou <strong>100 XP</strong> pela fase concluída.</p>
+      ${next
+        ? `<button class="btn primary" onclick="openPhase(${next})">Ir para a Fase ${next} →</button>`
+        : `<button class="btn green" onclick="window.scrollTo({top:0,behavior:'smooth'})">Ver minhas conquistas 🏆</button>`}
+    </div>`;
+}
+
+function resetGame(){
+  if(confirm('Deseja apagar todas as estrelas, XP e fases concluídas desta jornada?')){
+    localStorage.removeItem('msaKidsGame12');
+    currentPhase=1;quizState={};
+    renderStats();renderMap();renderMission();
+  }
+}
+
+renderStats();
+renderMap();
+const prog=getProgress();
+currentPhase=maxUnlocked(prog);
+renderMap();
+renderMission();
 </script>
 </body>
 </html>
