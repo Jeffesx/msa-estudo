@@ -69,3 +69,9 @@ Ao finalizar, o módulo mostra acertos, erros, questões em branco, percentual, 
 - imprimir ou salvar o relatório como PDF pelo navegador.
 
 O relatório exportado contém os dados do candidato, prova, data/hora, resposta do candidato, resposta correta, indicação de acerto/erro/em branco, definição/regra do MSA, explicação e referência.
+
+### Módulo de Simulados — layout integrado
+O módulo `/provas/` foi redesenhado para funcionar como parte do Portal de Estudos:
+1. Identificação e seleção da prova;
+2. Execução com progresso e navegador de questões;
+3. Resultado com correção detalhada e exportação.
